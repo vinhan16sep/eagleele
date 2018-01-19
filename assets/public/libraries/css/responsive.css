@@ -1,0 +1,64 @@
+.expandnav {
+	padding-top: 15px;
+	padding-right: 15px;
+	text-align: right;
+}
+
+.btn-primary {
+	color: #333;
+    background-color:transparent; 
+    border-color: transparent; 
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{
+	color: #333;
+    background-color:transparent; 
+    border-color: transparent; 
+}
+
+.well{
+	background: #fff;
+}
+
+.well ul{
+	list-style: none;
+}
+
+.well ul li{
+	font-size: 1.5em;
+	background: url(../img/right-arrow.png) no-repeat -2px 12px;
+	padding: 5px 0 5px 20px;
+}
+
+.course-xs{
+	background: #f4f4f4;
+	margin-bottom: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+@media(max-width:768px){
+	.header-fixed img{
+		width: 100%;
+	}
+	
+	.collapse{
+		margin-top: 20px;
+		border-radius: 5px;
+	}
+	
+	.scrollup {
+		padding: 5px;
+		bottom: 20px;
+		right: 20px;
+	}
+	
+	.map{
+		margin-top: 15px;
+	}
+	
+	.grid-sizer, .grid-item{
+		width: 50%;
+	}
+	
+}

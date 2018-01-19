@@ -1,0 +1,15 @@
+[11-Oct-2017 05:51:25 Europe/Rome] PHP Warning:  scandir(../source/): failed to open dir: No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:51:25 Europe/Rome] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:51:25 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 487
+[11-Oct-2017 05:51:25 Europe/Rome] PHP Notice:  Undefined variable: files_prevent_duplicate in /home/eag10683f/public_html/filemanager/dialog.php on line 987
+[11-Oct-2017 05:51:25 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 987
+[11-Oct-2017 05:56:14 Europe/Rome] PHP Warning:  scandir(../source/): failed to open dir: No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:56:14 Europe/Rome] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:56:14 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 487
+[11-Oct-2017 05:56:14 Europe/Rome] PHP Notice:  Undefined variable: files_prevent_duplicate in /home/eag10683f/public_html/filemanager/dialog.php on line 987
+[11-Oct-2017 05:56:14 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 987
+[11-Oct-2017 05:57:41 Europe/Rome] PHP Warning:  scandir(../source/): failed to open dir: No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:57:41 Europe/Rome] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/eag10683f/public_html/filemanager/dialog.php on line 478
+[11-Oct-2017 05:57:41 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 487
+[11-Oct-2017 05:57:41 Europe/Rome] PHP Notice:  Undefined variable: files_prevent_duplicate in /home/eag10683f/public_html/filemanager/dialog.php on line 987
+[11-Oct-2017 05:57:41 Europe/Rome] PHP Warning:  Invalid argument supplied for foreach() in /home/eag10683f/public_html/filemanager/dialog.php on line 987
