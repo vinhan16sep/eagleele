@@ -66,9 +66,13 @@
             $url_vi = base_url() . 'vi/' . 'introduce/detail_partner/' . $partner_id;
             break;
             
-        case 'list_training':
-            $url_en = base_url() . 'en/' . 'training';
-            $url_vi = base_url() . 'vi/' . 'training';
+        case 'list_project':
+            $url_en = base_url() . 'en/' . 'project';
+            $url_vi = base_url() . 'vi/' . 'project';
+            break;
+        case 'detail_project':
+            $url_en = base_url() . 'en/' . 'project/detail/' . $project_id;
+            $url_vi = base_url() . 'vi/' . 'project/detail/' . $project_id;
             break;
         case 'training_seven_steps':
             $url_en = base_url() . 'en/' . 'training/training_seven_steps';
@@ -86,9 +90,13 @@
             $url_en = base_url() . 'en/' . 'training/training_people';
             $url_vi = base_url() . 'vi/' . 'training/training_people';
             break;
-        case 'advice':
-            $url_en = base_url() . 'en/' . 'advice/index/' . $advice_id;
-            $url_vi = base_url() . 'vi/' . 'advice/index/' . $advice_id;
+        case 'list_advice':
+            $url_en = base_url() . 'en/' . 'advice';
+            $url_vi = base_url() . 'vi/' . 'advice';
+            break;
+        case 'detail_advice':
+            $url_en = base_url() . 'en/' . 'advice/detail/' . $advice_id;
+            $url_vi = base_url() . 'vi/' . 'advice/detail/' . $advice_id;
             break;
         case 'list_article':
             $url_en = base_url() . 'en/' . 'article';
@@ -139,8 +147,8 @@
                 <nav class="nav hidden-xs hidden-sm">
                     <ul>
                         <li><a href="<?php echo site_url('introduce'); ?>"><?php echo $this->lang->line('introduce'); ?></a></li>
-                        <li><a href="<?php echo site_url('training'); ?>"><?php echo $this->lang->line('training'); ?></a></li>
-                        <li><a href="<?php echo site_url('advice/index/1'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
+                        <li><a href="<?php echo site_url('project'); ?>"><?php echo $this->lang->line('training'); ?></a></li>
+                        <li><a href="<?php echo site_url('advice'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
                         <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
                         <li><a href="<?php echo site_url('recruitment'); ?>"><?php echo $this->lang->line('recruitment'); ?></a></li>
                         <li><a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('library'); ?></a></li>

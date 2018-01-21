@@ -44,6 +44,8 @@ class Project extends Admin_Controller {
 
         $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('description_vi', 'Tóm tắt', 'required');
+        $this->form_validation->set_rules('description_en', 'Description', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->render('admin/project/create_project_view');
@@ -99,6 +101,8 @@ class Project extends Admin_Controller {
 
         $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('description_vi', 'Tóm tắt', 'required');
+        $this->form_validation->set_rules('description_en', 'Description', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $result = $this->project_model->get_by_id($input_id);
