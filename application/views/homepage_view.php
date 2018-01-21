@@ -109,46 +109,15 @@
                 <div class="title-underline"></div>
             </div>
             <div class="index-coach-left col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="<?php echo base_url('assets/public/img/coach/lethamduong.jpg'); ?>">
-                    <?php if($lang == 'vi'): ?>
-                    <label> Ông Lê Thẩm Dương</label>
-                    <p>Tiến sỹ kinh tế</p>
-                    <?php elseif($lang == 'en'): ?>
-                    <label> Mr Le Tham Duong</label>
-                    <p>PhD in economics</p>
-                    <?php  endif; ?>
-                </div>
-                <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="<?php echo base_url('assets/public/img/coach/hoangvanhoa.jpg'); ?>">
-                    <?php if($lang == 'vi'): ?>
-                    <label> Ông Hoàng Văn Hòa</label>
-                    <p>Nguyên là Giám đốc Marketing Tập đoàn Volwagen</p>
-                    <?php elseif($lang == 'en'): ?>
-                    <label> Mr Hoang Van Hoa</label>
-                    <p>Formerly Director of Marketing for the Volkswagen Group</p>
-                    <?php  endif; ?>
-                </div>
-                <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="<?php echo base_url('assets/public/img/coach/tathiphuocthanh.jpg'); ?>">
-                    <?php if($lang == 'vi'): ?>
-                    <label> Bà Tạ Thị Phước Thạnh</label>
-                    <p>Thạc sĩ Quản trị kinh doanh </p>
-                    <?php elseif($lang == 'en'): ?>
-                    <label> Mrs Ta Thi Phuoc Thanh</label>
-                    <p>Master of Business Administration </p>
-                    <?php  endif; ?>
-                </div>
-                <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="<?php echo base_url('assets/public/img/coach/phamvanpho.jpg'); ?>">
-                    <?php if($lang == 'vi'): ?>
-                    <label> Ông Phạm Văn Phổ</label>
-                    <p>Tiến sỹ kinh tế</p>
-                    <?php elseif($lang == 'en'): ?>
-                    <label> Mr Pham Van Pho</label>
-                    <p>PhD in economics</p>
-                    <?php  endif; ?>
-                </div>
+                <?php for($i = 0; $i < 4; $i++) { ?>
+                    <?php if(isset($teachers[$i])): ?>
+                        <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <img src="<?php echo base_url('assets/upload/teacher/' . $teachers[$i]['description_image']); ?>">
+                            <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['teacher_id']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
+                            <p><?php echo $teachers[$i]['position']; ?></p>
+                        </div>
+                    <?php endif; ?>
+                <?php } ?>
             </div>
             <div class="index-coach-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <?php if($lang == 'vi'): ?>
