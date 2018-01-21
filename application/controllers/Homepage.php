@@ -17,6 +17,7 @@ class Homepage extends Public_Controller {
 
         list($this->data['events'], $this->data['news']) = $this->list_latest_articles();
         $this->data['banners'] = $this->list_banners();
+        $this->data['teachers'] = $this->list_teachers();
 
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
@@ -102,6 +103,11 @@ class Homepage extends Public_Controller {
         $banners = $this->banner_model->get_all();
 
         return $banners;
+    }
+
+    public function list_teachers(){
+        $this->load->model('teacher_model');
+        return $teachers = $this->teacher_model->get_all_by_language($this->data['lang']);
     }
     
 }
