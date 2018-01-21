@@ -24,6 +24,11 @@ if($this->ion_auth->logged_in()) {
                 </a>
             </li>
             <li class="sub-menu">
+                <a href="<?php echo site_url('admin/project'); ?>" class="">
+                    <span>Dự án đào tạo</span>
+                </a>
+            </li>
+            <li class="sub-menu">
                 <a href="<?php echo site_url('admin/banner'); ?>" class="">
                     <span>Banner</span>
                 </a>
@@ -49,6 +54,12 @@ if($this->ion_auth->logged_in()) {
                 <a href="<?php echo site_url('admin/library'); ?>" class="">
                     <i class="icon_document_alt"></i>
                     <span>Thư viện</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="<?php echo site_url('admin/video'); ?>" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Video Youtube</span>
                 </a>
             </li>
         </ul>
