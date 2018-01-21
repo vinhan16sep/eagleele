@@ -26,60 +26,72 @@ class Advice extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $this->data['advices'] = $this->advice_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->advice_model->get_all_with_pagination($per_page, $this->data['page']);
+
+        $output = array();
+        foreach($result as $key => $value){
+            $output[$key]['id'] = $value['id'];
+            $output[$key]['data'] = $this->advice_model->get_by_id($value['id']);
+        }
+        $this->data['advices'] = $output;
 
         $this->render('admin/advice/list_advice_view');
     }
 
-    // public function create() {
-    //     $this->load->helper('form');
-    //     $this->load->library('form_validation');
+    public function create() {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
-    //     $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-    //     $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_en', 'Title', 'required');
 
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $this->render('admin/recruitment/create_recruitment_view');
-    //     } else {
-    //         if ($this->input->post()) {
-    //             $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/recruitment', 'assets/upload/recruitment/thumb');
-    //             $data = array(
-    //                 'status' => $this->input->post('status'),
-    //                 'description_image' => $image,
-    //                 'created_at' => $this->author_info['created_at'],
-    //                 'created_by' => $this->author_info['created_by'],
-    //                 'modified_at' => $this->author_info['modified_at'],
-    //                 'modified_by' => $this->author_info['modified_by']
-    //             );
+        if ($this->form_validation->run() == FALSE) {
+            $this->render('admin/advice/create_advice_view');
+        } else {
+            if ($this->input->post()) {
+                $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/advice', 'assets/upload/advice/thumb');
+                $data = array(
+                    'description_image' => $image,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
 
-    //             try {
-    //                 $insert_id = $this->recruitment_model->insert($data);
-    //                 $data_vi = array(
-    //                     'recruitment_id' => $insert_id,
-    //                     'language' => 'vi',
-    //                     'title' => $this->input->post('title_vi'),
-    //                     'description' => $this->input->post('description_vi'),
-    //                     'content' => $this->input->post('content_vi')
-    //                 );
-    //                 $data_en = array(
-    //                     'recruitment_id' => $insert_id,
-    //                     'language' => 'en',
-    //                     'title' => $this->input->post('title_en'),
-    //                     'description' => $this->input->post('description_en'),
-    //                     'content' => $this->input->post('content_en')
-    //                 );
+                try {
+                    $insert_id = $this->advice_model->insert($data);
+                    $data_vi = array(
+                        'advice_id' => $insert_id,
+                        'language' => 'vi',
+                        'title' => $this->input->post('title_vi'),
+                        'slug' => $this->input->post('slug_vi'),
+                        'meta_description' => $this->input->post('meta_description_vi'),
+                        'meta_keywords' => $this->input->post('meta_keywords_vi'),
+                        'description' => $this->input->post('description_vi'),
+                        'content' => $this->input->post('content_vi')
+                    );
+                    $data_en = array(
+                        'advice_id' => $insert_id,
+                        'language' => 'en',
+                        'title' => $this->input->post('title_en'),
+                        'slug' => $this->input->post('slug_en'),
+                        'meta_description' => $this->input->post('meta_description_en'),
+                        'meta_keywords' => $this->input->post('meta_keywords_en'),
+                        'description' => $this->input->post('description_en'),
+                        'content' => $this->input->post('content_en')
+                    );
 
-    //                 $this->recruitment_model->insert_with_language($data_vi, $data_en);
+                    $this->advice_model->insert_with_language($data_vi, $data_en);
 
-    //                 $this->session->set_flashdata('message', 'Item added successfully');
-    //             } catch (Exception $e) {
-    //                 $this->session->set_flashdata('message', 'There was an error inserting item: ' . $e->getMessage());
-    //             }
+                    $this->session->set_flashdata('message', 'Item added successfully');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item: ' . $e->getMessage());
+                }
 
-    //             redirect('admin/recruitment', 'refresh');
-    //         }
-    //     }
-    // }
+                redirect('admin/advice', 'refresh');
+            }
+        }
+    }
 
     public function edit($id = NULL) {
         $this->load->helper('form');
@@ -95,7 +107,7 @@ class Advice extends Admin_Controller {
             redirect('admin/advice', 'refresh');
         }
 
-        // Title
+        // Name
         $title = explode('|||', $result['advice_title']);
         $result['title_en'] = $title[0];
         $result['title_vi'] = $title[1];
@@ -115,20 +127,31 @@ class Advice extends Admin_Controller {
         $result['meta_keywords_en'] = isset($meta_keywords[0]) ? $meta_keywords[0] : '';
         $result['meta_keywords_vi'] = isset($meta_keywords[1]) ? $meta_keywords[1] : '';
 
+        // Description
+        $description = explode('|||', $result['advice_description']);
+        $result['description_en'] = isset($description[0]) ? $description[0] : '';
+        $result['description_vi'] = isset($description[1]) ? $description[1] : '';
+
         // Content
         $content = explode('|||', $result['advice_content']);
-        $result['content_en'] = $content[0];
-        $result['content_vi'] = $content[1];
+        $result['content_en'] = isset($content[0]) ? $content[0] : '';
+        $result['content_vi'] = isset($content[1]) ? $content[1] : '';
 
         if ($this->form_validation->run() == FALSE) {
             $this->data['advice'] = $result;
             $this->render('admin/advice/edit_advice_view');
         } else {
             if ($this->input->post()) {
+                $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/advice', 'assets/upload/advice/thumbs');
                 $data = array(
+                    'description_image' => $image,
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
+
+                if ($image == '') {
+                    unset($data['description_image']);
+                }
 
                 try {
                     $this->advice_model->update($input_id, $data);
@@ -137,6 +160,7 @@ class Advice extends Admin_Controller {
                         'slug' => $this->input->post('slug_vi'),
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
+                        'description' => $this->input->post('description_vi'),
                         'content' => $this->input->post('content_vi')
                     );
                     $this->advice_model->update_with_language_vi($input_id, $data_vi);
@@ -146,6 +170,7 @@ class Advice extends Admin_Controller {
                         'slug' => $this->input->post('slug_en'),
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
+                        'description' => $this->input->post('description_en'),
                         'content' => $this->input->post('content_en')
                     );
 
@@ -162,20 +187,24 @@ class Advice extends Admin_Controller {
     }
 
     public function delete($id = NULL) {
-        $result = $this->recruitment_model->get_by_id($id);
+        $input = $this->input->get();
+        $blog = $this->advice_model->get_by_id($input['id']);
 
-        if (!$result) {
-            redirect('admin/recruitment', 'refresh');
+        if (!$blog) {
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
         }
 
         $set_delete = array('is_deleted' => 1);
-        try {
-            $this->recruitment_model->remove($id, $set_delete);
-            $this->session->set_flashdata('message', 'Item has deleted successful.');
-        } catch (Exception $e) {
-            $this->session->set_flashdata('message', 'Have error while delete item: ' . $e->getMessage());
+        $result = $this->advice_model->remove($input['id'], $set_delete);
+
+        if($result == false){
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
+        }else{
+            $this->output->set_status_header(200)
+                ->set_output(json_encode(array('message' => 'Success', 'data' => $input)));
         }
-        redirect('admin/recruitment', 'refresh');
     }
 
 }

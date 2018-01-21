@@ -127,6 +127,7 @@
         color: #30322f;
     }
     .checkout-promise-item i{padding-right: 10px;color: #43b02a;}
+
 </style>
 <div class="container">
     <div class="row">
@@ -142,13 +143,6 @@
                     <div id="collapseOne" class="collapse in">
                         <div class="checkout-step-body">
                             <div class="row">
-                                <div class="form-group">
-                                    <?php
-                                    echo form_label('Giới tính / ', 'gender');
-                                    echo form_error('gender');
-                                    echo form_dropdown('gender', array('0' => 'Ông', '1' => 'Bà'), set_value('gender', 0), 'class="form-control"');
-                                    ?>
-                                </div>
                                 <div class="form-group picture">
                                     <?php
                                     echo form_label('Ảnh đại diện / Picture', 'picture');
@@ -171,23 +165,44 @@
                             <div class="row">
                                 <div class="form-group">
                                     <?php
-                                    echo form_label('Họ tên', 'name_vi');
-                                    echo form_error('name_vi');
-                                    echo form_input('name_vi', set_value('name_vi'), 'class="form-control"');
-                                    ?>
-                                </div>
-                                <div class="form-group description">
-                                    <?php
-                                    echo form_label('Chức vụ', 'position_vi');
-                                    echo form_error('position_vi');
-                                    echo form_textarea('position_vi', set_value('position_vi'), 'class="form-control"');
+                                    echo form_label('Tiêu đề', 'title_vi');
+                                    echo form_error('title_vi');
+                                    echo form_input('title_vi', set_value('title_vi'), 'class="form-control title_vi"');
                                     ?>
                                 </div>
                                 <div class="form-group">
                                     <?php
-                                    echo form_label('Tiểu sử', 'bio_vi');
-                                    echo form_error('bio_vi');
-                                    echo form_textarea('bio_vi', set_value('bio_vi', '', false), 'class="form-control teacher-content"')
+                                    echo form_label('Slug', 'slug_vi');
+                                    echo form_error('slug_vi');
+                                    echo form_input('slug_vi', set_value('slug_vi'), 'class="form-control slug_vi" readonly="readonly"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Meta Description', 'meta_description_vi');
+                                    echo form_error('meta_description_vi');
+                                    echo form_input('meta_description_vi', set_value('meta_description_vi'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Meta Keywords', 'meta_keywords_vi');
+                                    echo form_error('meta_keywords_vi');
+                                    echo form_input('meta_keywords_vi', set_value('meta_keywords_vi'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group description">
+                                    <?php
+                                    echo form_label('Tóm tắt', 'description_vi');
+                                    echo form_error('description_vi');
+                                    echo form_textarea('description_vi', set_value('description_vi'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Nội dung', 'content_vi');
+                                    echo form_error('content_vi');
+                                    echo form_textarea('content_vi', set_value('content_vi', '', false), 'class="form-control blog-content"')
                                     ?>
                                 </div>
                                 <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Next</a>
@@ -205,23 +220,44 @@
                             <div class="row">
                                 <div class="form-group">
                                     <?php
-                                    echo form_label('Full name', 'name_en');
-                                    echo form_error('name_en');
-                                    echo form_input('name_en', set_value('name_en'), 'class="form-control"');
-                                    ?>
-                                </div>
-                                <div class="form-group description">
-                                    <?php
-                                    echo form_label('Position', 'position_en');
-                                    echo form_error('position_en');
-                                    echo form_textarea('position_en', set_value('position_en'), 'class="form-control"');
+                                    echo form_label('Title', 'title_en');
+                                    echo form_error('title_en');
+                                    echo form_input('title_en', set_value('title_en'), 'class="form-control title_en"');
                                     ?>
                                 </div>
                                 <div class="form-group">
                                     <?php
-                                    echo form_label('Biography', 'bio_en');
-                                    echo form_error('bio_en');
-                                    echo form_textarea('bio_en', set_value('bio_en', '', false), 'class="form-control teacher-content"')
+                                    echo form_label('Slug', 'slug_en');
+                                    echo form_error('slug_en');
+                                    echo form_input('slug_en', set_value('slug_en'), 'class="form-control slug_en" readonly="readonly"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Meta Description', 'meta_description_en');
+                                    echo form_error('meta_description_en');
+                                    echo form_input('meta_description_en', set_value('meta_description_en'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Meta Keywords', 'meta_keywords_en');
+                                    echo form_error('meta_keywords_en');
+                                    echo form_input('meta_keywords_en', set_value('meta_keywords_en'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group description">
+                                    <?php
+                                    echo form_label('Description', 'description_en');
+                                    echo form_error('description_en');
+                                    echo form_textarea('description_en', set_value('description_en'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php
+                                    echo form_label('Content', 'content_en');
+                                    echo form_error('content_en');
+                                    echo form_textarea('content_en', set_value('content_en', '', false), 'class="form-control blog-content"')
                                     ?>
                                 </div>
                                 <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Back</a>
@@ -244,7 +280,7 @@
 <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
 <script>
     tinymce.init({
-        selector: ".teacher-content",
+        selector: ".blog-content",
         theme: "modern",
         height: 200,
         relative_urls: false,
@@ -268,5 +304,15 @@
         external_filemanager_path: "<?php echo site_url('filemanager/'); ?>",
         filemanager_title: "Responsive Filemanager",
         external_plugins: {"filemanager": "<?php echo site_url('filemanager/plugin.min.js'); ?>"}
+    });
+
+    $('.title_vi').change(function(){
+        var slug = to_slug($('.title_vi').val());
+        $('.slug_vi').val(slug);
+    });
+
+    $('.title_en').change(function(){
+        var slug = to_slug($('.title_en').val());
+        $('.slug_en').val(slug);
     });
 </script>

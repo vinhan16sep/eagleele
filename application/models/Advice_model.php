@@ -9,25 +9,35 @@ class Advice_model extends CI_Model {
     }
 
     public function get_all_with_pagination($limit = NULL, $start = NULL) {
-        $this->db->select('advice.*, al.*');
+        $this->db->select('*');
         $this->db->from('advice');
-        $this->db->join('advice_lang al', 'al.advice_id = advice.id');
-        $this->db->where('advice.is_deleted', 0);
+        $this->db->where('is_deleted', 0);
         $this->db->limit($limit, $start);
-        $this->db->order_by("advice.id", "asc");
+        $this->db->order_by("id", "desc");
 
-        $result = $this->db->get()->result_array();
-
-        $converted_data = array();
-
-        for($i = 0; $i < count($result); $i++){
-            if(($i % 2) == 0){
-                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
-            }
-        }
-
-        return $converted_data;
+        return $result = $this->db->get()->result_array();
     }
+
+//    public function get_all_with_pagination($limit = NULL, $start = NULL) {
+//        $this->db->select('advice.*, al.*');
+//        $this->db->from('advice');
+//        $this->db->join('advice_lang al', 'al.advice_id = advice.id');
+//        $this->db->where('advice.is_deleted', 0);
+//        $this->db->limit($limit, $start);
+//        $this->db->order_by("advice.id", "asc");
+//
+//        $result = $this->db->get()->result_array();
+//
+//        $converted_data = array();
+//
+//        for($i = 0; $i < count($result); $i++){
+//            if(($i % 2) == 0){
+//                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
+//            }
+//        }
+//
+//        return $converted_data;
+//    }
 
     public function get_all_by_language($lang){
         $this->db->select('*');
@@ -75,6 +85,7 @@ class Advice_model extends CI_Model {
                             GROUP_CONCAT(advice_lang.slug ORDER BY advice_lang.language separator \'|||\') as advice_slug,
                             GROUP_CONCAT(advice_lang.meta_description ORDER BY advice_lang.language separator \'|||\') as advice_meta_description,
                             GROUP_CONCAT(advice_lang.meta_keywords ORDER BY advice_lang.language separator \'|||\') as advice_meta_keywords,
+                            GROUP_CONCAT(advice_lang.description ORDER BY advice_lang.language separator \'|||\') as advice_description,
                             GROUP_CONCAT(advice_lang.content ORDER BY advice_lang.language separator \'|||\') as advice_content');
         $this->db->from('advice');
         $this->db->join('advice_lang', 'advice_lang.advice_id = advice.id', 'left');

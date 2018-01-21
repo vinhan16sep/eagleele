@@ -127,6 +127,7 @@
         color: #30322f;
     }
     .checkout-promise-item i{padding-right: 10px;color: #43b02a;}
+
 </style>
 <div class="container">
     <div class="row">
@@ -137,9 +138,29 @@
             <div id="accordion" class="checkout">
                 <div class="panel checkout-step">
                     <div role="tab" id="headingOne"> <span class="checkout-step-number">1</span>
-                        <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Tiếng Việt </a></h4>
+                        <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Basic Info</a></h4>
                     </div>
                     <div id="collapseOne" class="collapse in">
+                        <div class="checkout-step-body">
+                            <div class="row">
+                                <div class="form-group picture">
+                                    <?php
+                                    echo form_label('Ảnh đại diện / Picture', 'picture');
+                                    echo form_error('picture');
+                                    echo form_upload('picture', set_value('picture'), 'class="form-control"');
+                                    ?>
+                                </div>
+                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Next</a>
+                                <!-- /.col-lg-6 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel checkout-step">
+                    <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
+                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Tiếng Việt </a> </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
                         <div class="checkout-step-body">
                             <div class="row">
                                 <div class="form-group">
@@ -170,23 +191,31 @@
                                     echo form_input('meta_keywords_vi', set_value('meta_keywords_vi', $advice['meta_keywords_vi']), 'class="form-control"');
                                     ?>
                                 </div>
+                                <div class="form-group description">
+                                    <?php
+                                    echo form_label('Tóm tắt', 'description_vi');
+                                    echo form_error('description_vi');
+                                    echo form_textarea('description_vi', set_value('description_vi', $advice['description_vi']), 'class="form-control"');
+                                    ?>
+                                </div>
                                 <div class="form-group">
                                     <?php
                                     echo form_label('Nội dung', 'content_vi');
                                     echo form_error('content_vi');
-                                    echo form_textarea('content_vi', set_value('content_vi', $advice['content_vi'], false), 'class="form-control teacher-content"')
+                                    echo form_textarea('content_vi', set_value('content_vi', $advice['content_vi'], false), 'class="form-control blog-content"')
                                     ?>
                                 </div>
-                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Next</a>
+                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Next</a>
+                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Back</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel checkout-step">
-                    <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
-                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > English </a> </h4>
+                    <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
+                        <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" > English </a> </h4>
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
+                    <div id="collapseThree" class="panel-collapse collapse">
                         <div class="checkout-step-body">
                             <div class="row">
                                 <div class="form-group">
@@ -217,14 +246,21 @@
                                     echo form_input('meta_keywords_en', set_value('meta_keywords_en', $advice['meta_keywords_en']), 'class="form-control"');
                                     ?>
                                 </div>
+                                <div class="form-group description">
+                                    <?php
+                                    echo form_label('Description', 'description_en');
+                                    echo form_error('description_en');
+                                    echo form_textarea('description_en', set_value('description_en', $advice['description_en']), 'class="form-control"');
+                                    ?>
+                                </div>
                                 <div class="form-group">
                                     <?php
                                     echo form_label('Content', 'content_en');
                                     echo form_error('content_en');
-                                    echo form_textarea('content_en', set_value('content_en', $advice['content_en'], false), 'class="form-control teacher-content"')
+                                    echo form_textarea('content_en', set_value('content_en', $advice['content_en'], false), 'class="form-control blog-content"')
                                     ?>
                                 </div>
-                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Back</a>
+                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Back</a>
                             </div>
                         </div>
                     </div>
@@ -244,7 +280,7 @@
 <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
 <script>
     tinymce.init({
-        selector: ".teacher-content",
+        selector: ".blog-content",
         theme: "modern",
         height: 200,
         relative_urls: false,
@@ -270,12 +306,12 @@
         external_plugins: {"filemanager": "<?php echo site_url('filemanager/plugin.min.js'); ?>"}
     });
 
-    $('.title_vi').blur(function(){
+    $('.title_vi').change(function(){
         var slug = to_slug($('.title_vi').val());
         $('.slug_vi').val(slug);
     });
 
-    $('.title_en').blur(function(){
+    $('.title_en').change(function(){
         var slug = to_slug($('.title_en').val());
         $('.slug_en').val(slug);
     });

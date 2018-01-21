@@ -42,8 +42,8 @@ class Project extends Admin_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name_vi', 'Tiêu đề', 'required');
-        $this->form_validation->set_rules('name_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->render('admin/project/create_project_view');
@@ -97,8 +97,8 @@ class Project extends Admin_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name_vi', 'Tiêu đề', 'required');
-        $this->form_validation->set_rules('name_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $result = $this->project_model->get_by_id($input_id);
@@ -129,13 +129,13 @@ class Project extends Admin_Controller {
 
         // Description
         $description = explode('|||', $result['project_description']);
-        $result['description_en'] = $description[0];
-        $result['description_vi'] = $description[1];
+        $result['description_en'] = isset($description[0]) ? $description[0] : '';
+        $result['description_vi'] = isset($description[1]) ? $description[1] : '';
 
         // Content
         $content = explode('|||', $result['project_content']);
-        $result['content_en'] = $content[0];
-        $result['content_vi'] = $content[1];
+        $result['content_en'] = isset($content[0]) ? $content[0] : '';
+        $result['content_vi'] = isset($content[1]) ? $content[1] : '';
 
         if ($this->form_validation->run() == FALSE) {
             $this->data['project'] = $result;
