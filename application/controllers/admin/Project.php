@@ -204,9 +204,9 @@ class Project extends Admin_Controller {
 
     public function delete($id = NULL) {
         $input = $this->input->get();
-        $blog = $this->project_model->get_by_id($input['id']);
+        $project = $this->project_model->get_by_id($input['id']);
 
-        if (!$blog) {
+        if (!$project) {
             $this->output->set_status_header(404)
                 ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
         }
