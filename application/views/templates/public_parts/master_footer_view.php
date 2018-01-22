@@ -45,7 +45,24 @@
 <div class="scrollup">
     <i class="fa fa-chevron-up fa-3x"></i>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="introModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <?php echo $popup_content['intro_content']; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </body>
+<script>
+    <?php if($show_intro_popup == 1): ?>
+        $('#introModal').modal('show');
+    <?php endif; ?>
+</script>
 <!-- InstanceBeginEditable name="addition" -->
 <!-- InstanceEndEditable -->
 <!-- InstanceEnd --></html>

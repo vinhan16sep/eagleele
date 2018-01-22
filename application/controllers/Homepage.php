@@ -9,7 +9,10 @@ class Homepage extends Public_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('intro_model');
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
+        $this->data['show_intro_popup'] = true;
+        $this->data['popup_content'] = $this->intro_model->get_by_id(1, $this->data['lang']);
     }
 
 	public function index(){
