@@ -28,9 +28,9 @@ class Recruitment extends Public_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->data['category'] = $this->uri->segment(1);
+        $this->data['category'] = 'recruitment';
 
-        $where = array('category' => $this->uri->segment(1), 'detail_id' => $this->uri->segment(3));
+        $where = array('category' => 'recruitment', 'detail_id' => $slug);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;

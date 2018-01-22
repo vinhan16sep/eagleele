@@ -158,4 +158,14 @@ class Article_model extends CI_Model {
         return $this->db->update('article', $set_delete);
     }
 
+    public function get_id($id) {
+        $this->db->select('*');
+        $this->db->from('article_lang');
+        $this->db->where('article_id', $id);
+        $this->db->where('language', 'vi');
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
+    }
+
 }

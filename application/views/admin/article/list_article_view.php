@@ -26,7 +26,8 @@
                     ?>
                     <td><span><?php echo ($item['type'][0] == 0) ? 'Event' : 'News' ?></span></td>
                     <?php
-                    echo '<td>' . anchor('admin/article/edit/' . $item['article_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo '<td>' . anchor('admin/comment/index/article/' . $item['article_id'][0], '<span class="glyphicon glyphicon-comment"></span>');
+                    echo ' '.anchor('admin/article/edit/' . $item['article_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
                     echo ' ' . anchor('admin/article/delete/' . $item['article_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;

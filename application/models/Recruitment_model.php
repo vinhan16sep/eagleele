@@ -128,4 +128,14 @@ class Recruitment_model extends CI_Model {
         return $this->db->update('recruitment', $set_delete);
     }
 
+    public function get_id($id) {
+        $this->db->select('*');
+        $this->db->from('recruitment_lang');
+        $this->db->where('recruitment_id', $id);
+        $this->db->where('language', 'vi');
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
+    }
+
 }
