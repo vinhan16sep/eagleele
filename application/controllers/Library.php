@@ -33,7 +33,7 @@ class Library extends Public_Controller {
 
         $this->data['category'] = 'library';
 
-        $where = array('category' => 'library', 'detail_id' => $slug);
+        $where = array('category' => 'library', 'detail_id' => $id);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;

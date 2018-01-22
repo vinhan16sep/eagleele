@@ -43,6 +43,12 @@ class Article extends Admin_Controller {
             $this->render('admin/article/create_article_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->article_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->article_model->build_unique_slug($slug_en);
+
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/article', 'assets/upload/article/thumb');
                 $banner = $this->upload_image('banner', $_FILES['banner']['name'], 'assets/upload/article/banner', 'assets/upload/article/banner/thumb');
                 $type = $this->input->post('type');
@@ -72,7 +78,7 @@ class Article extends Admin_Controller {
                         'event_address' => ($type == 0) ? $this->input->post('address_vi') : null,
                         'event_cost' => ($type == 0) ? $this->input->post('cost_vi') : null,
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -86,7 +92,7 @@ class Article extends Admin_Controller {
                         'event_address' => ($type == 0) ? $this->input->post('address_en') : null,
                         'event_cost' => ($type == 0) ? $this->input->post('cost_en') : null,
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),
@@ -177,6 +183,12 @@ class Article extends Admin_Controller {
             $this->render('admin/article/edit_article_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->article_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->article_model->build_unique_slug($slug_en);
+
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/article', 'assets/upload/article/thumb');
                 $banner = $this->upload_image('banner', $_FILES['banner']['name'], 'assets/upload/article/banner', 'assets/upload/article/banner/thumb');
                 $type = $this->input->post('type');
@@ -207,7 +219,7 @@ class Article extends Admin_Controller {
                         'event_address' => ($type == 0) ? $this->input->post('address_vi') : null,
                         'event_cost' => ($type == 0) ? $this->input->post('cost_vi') : null,
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -221,7 +233,7 @@ class Article extends Admin_Controller {
                         'event_address' => ($type == 0) ? $this->input->post('address_en') : null,
                         'event_cost' => ($type == 0) ? $this->input->post('cost_en') : null,
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),
