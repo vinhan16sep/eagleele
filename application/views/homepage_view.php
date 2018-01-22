@@ -96,6 +96,7 @@
             </div>-->
         </div>
         <div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
+            <?php if(isset($video[0])): ?>
             <div class="content-title">
                 <h2>Video</h2>
                 <div class="title-underline"></div>
@@ -104,8 +105,11 @@
                 <!--
                     Allow embed a youtube video into homepage, change link in src. All style fixed.
                 -->
-                <iframe src="https://www.youtube.com/embed/3CangP9M5z0" frameborder="0" allowfullscreen></iframe>
+
+                <iframe src="<?php echo $video[0]['url']; ?>" frameborder="0" allowfullscreen></iframe>
+
             </div>
+            <?php endif; ?>
             <div class="index-banner">
                 <!--
                     Allow to put a banner, image to advitise a course or smth else on homepage, change link of image src and a link of embed page.

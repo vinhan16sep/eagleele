@@ -27,8 +27,14 @@
                     echo '<tr>';
                     echo '<td>' . $item['title'] . '</td>';
                     echo '<td>' . $item['url'] . '</td>';
-                    echo '<td>' . anchor('admin/video/edit/' . $item['id'], '<span class="glyphicon glyphicon-pencil"></span>');
-                    echo ' ' . anchor('admin/video/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<td>';
+                    echo '<a href="' . base_url('admin/video/edit/' . $item['id']) . '">';
+                    echo '<span class="glyphicon glyphicon-pencil"></span>';
+                    echo '</a>';
+                    echo '<a href="javascript:void(0);" onclick="deleteItem(' . $item['id'] . ')">';
+                    echo '<span class="glyphicon glyphicon-remove"></span>';
+                    echo '</a>';
+                    echo '</td>';
                     echo '</tr>';
                 endforeach;
             }else {
@@ -42,3 +48,31 @@
         </div>
     </div>
 </div>
+<script>
+    function deleteItem(id){
+        if(confirm('Chắc chắn xoá?')){
+            var url = '<?php echo base_url('admin/video/delete'); ?>';
+
+            $.ajax({
+                url: url,
+                method: 'get',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function(res){
+                    console.log(res);
+                    if(res.message == 'Success'){
+                        alert('Xoá thành công');
+                        location.reload();
+                    }else{
+                        alert('Xoá thất bại');
+                    }
+                },
+                error: function(){
+
+                }
+            });
+        }
+    }
+</script>

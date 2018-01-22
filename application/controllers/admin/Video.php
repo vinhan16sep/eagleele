@@ -22,6 +22,8 @@ class Video extends Admin_Controller {
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['videos'] = $this->video_model->fetch_all_pagination($config['per_page'], $page);
+//        echo '<pre>';
+//        print_r($this->data['videos']);die;
 
 
         $this->render('admin/video/list_video_view');
@@ -96,11 +98,25 @@ class Video extends Admin_Controller {
         }
     }
 
-   public function remove($id = NULL){
-      $id = $_GET['id'];
-      $this->video_model->delete('video',$id);
+    public function delete($id = NULL) {
+        $input = $this->input->get();
+        $blog = $this->video_model->fetch_by_id('video', $input['id']);
 
-       redirect('admin/video', 'refresh');
-   }
+        if (!$blog) {
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
+        }
+
+        $set_delete = array('is_deleted' => 1);
+        $result = $this->video_model->remove($input['id'], $set_delete);
+
+        if($result == false){
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
+        }else{
+            $this->output->set_status_header(200)
+                ->set_output(json_encode(array('message' => 'Success', 'data' => $input)));
+        }
+    }
 
 }

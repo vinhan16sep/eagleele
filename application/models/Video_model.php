@@ -125,6 +125,12 @@ class Video_model extends CI_Model {
         return false;
     }
 
+    public function remove($id, $set_delete) {
+        $this->db->where('id', $id);
+
+        return $this->db->update('video', $set_delete);
+    }
+
     public function count_day($where = array()) {
         if($where != NULL){
             $query = $this->db->select('*')
