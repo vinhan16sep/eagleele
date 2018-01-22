@@ -36,7 +36,22 @@
 </section>
 
 <section class="main-content container">
-
+    <div class="row" id="index-about">
+        <div class="index-about col-md-8 col-sm-8 col-xs-12">
+            <div class="content-title">
+                <h2><?php echo $this->lang->line('index_about_us'); ?></h2>
+                <div class="title-underline"></div>
+            </div>
+            <?php if($lang == 'vi'): ?>
+                <p>Công ty cổ phần EAGLE ELE, tên thương hiệu EAGLE ELE được thành lập và vận hành bởi những chuyên gia có nhiều năm kinh nghiệm chuyên môn thực tiễn, có kỹ năng chuyên sâu về công nghệ truyền thông, dịch vụ đào tạo và tham vấn tư vấn cùng đam mê, nhiệt huyết chia sẻ.</p>
+            <?php elseif($lang == 'en'): ?>
+                <p>EAGLE ELE company is established and operated by professionals with years of professional experience, specialized in communications technology, training and consulting services. consultant with passion, enthusiasm share.</p>
+            <?php  endif; ?>
+        </div>
+        <div class="index-about col-md-4 col-sm-4 col-xs-12">
+            <a href="<?php echo site_url('introduce'); ?>"><img src="<?php echo base_url('assets/public/img/logo.png'); ?>"></a>
+        </div>
+    </div>
     <div class="row">
         <div class="index-course col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="content-title">
@@ -132,90 +147,6 @@
             </div>
         </div>
     </div>
-
-    <!--<div class="row">
-        <div class="content-title">
-                <h2>Giáo trình tiêu biểu</h2>
-            </div>
-        <div id="index-books" class="carousel slide slide-books" data-ride="carousel">
-
-          <ol class="carousel-indicators">
-            <li data-target="#index-books" data-slide-to="0" class="active"></li>
-            <li data-target="#index-books" data-slide-to="1"></li>
-          </ol>
-
-
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                  <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <a href="#">
-                          <img src="img/book-100.jpg">
-                        <label class="slide-book-name">Cuốn sách hay I</label>
-                    </a>
-                </div>
-            </div>
-          </div>
-
-        </div>
-    </div>-->
-
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="content-title">
@@ -289,20 +220,21 @@
     </div>
 
     <div class="row">
-        <div class="index-about col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="content-title">
-                <h2><?php echo $this->lang->line('index_about_us'); ?></h2>
+                <h2><?php echo $this->lang->line('library'); ?></h2>
                 <div class="title-underline"></div>
             </div>
-
-            <img src="<?php echo base_url('assets/public/img/index_aboutus.jpg'); ?>">
-            <?php if($lang == 'vi'): ?>
-            <p>Công ty cổ phần EAGLE ELE, tên thương hiệu EAGLE ELE được thành lập và vận hành bởi những chuyên gia có nhiều năm kinh nghiệm chuyên môn thực tiễn, có kỹ năng chuyên sâu về công nghệ truyền thông, dịch vụ đào tạo và tham vấn tư vấn cùng đam mê, nhiệt huyết chia sẻ.</p>
-            <?php elseif($lang == 'en'): ?>
-            <p>EAGLE ELE company is established and operated by professionals with years of professional experience, specialized in communications technology, training and consulting services. consultant with passion, enthusiasm share.</p>
-            <?php  endif; ?>
+            <ul>
+                <?php if($libraries): ?>
+                    <?php foreach($libraries as $item): ?>
+                        <li>
+                            <a href="<?php echo site_url('article/detail/' . $item['library_id']); ?>"><?php echo $item['title']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
         </div>
-
         <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="content-title">
                 <h2><?php echo $this->lang->line('index_news'); ?></h2>

@@ -40,6 +40,18 @@ class Library_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
+    public function get_last_five_by_language($lang){
+        $this->db->select('*');
+        $this->db->from('library');
+        $this->db->join('library_lang', 'library_lang.library_id = library.id', 'left');
+        $this->db->where('library_lang.language', $lang);
+        $this->db->where('library.is_deleted', 0);
+        $this->db->limit(5);
+        $this->db->order_by("library.id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
     public function get_latest_library($lang){
         $this->db->select('*');
         $this->db->from('library');
