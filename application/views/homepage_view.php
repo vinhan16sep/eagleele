@@ -34,7 +34,7 @@
         </a>
     </div>
     <div class="row">
-        <div class="index-course col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="index-course col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="content-title">
                 <h2><?php echo $this->lang->line('index_event'); ?></h2>
                 <div class="title-underline"></div>
@@ -95,12 +95,24 @@
                 </div>
             </div>-->
         </div>
-        <div class="index-side col-lg-3 col-md-3 hidden-sm hidden-xs">
+        <div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
+            <div class="content-title">
+                <h2>Video</h2>
+                <div class="title-underline"></div>
+            </div>
             <div class="index-video">
+                <!--
+                    Allow embed a youtube video into homepage, change link in src. All style fixed.
+                -->
                 <iframe src="https://www.youtube.com/embed/3CangP9M5z0" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="index-banner">
-                <img src="img/banner-100.jpg">
+                <!--
+                    Allow to put a banner, image to advitise a course or smth else on homepage, change link of image src and a link of embed page.
+                -->
+                <a href="javascript:void(0);">
+                    <img src="<?php echo base_url('assets/public/img/banner/index_banner.jpg') ?>">
+                </a>
             </div>
         </div>
         <div class="index-coach col-lg-12 col-md-12 col-sm-12 col-xs-12">
