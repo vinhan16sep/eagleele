@@ -17,6 +17,7 @@ $lang['training'] = 'Training';
 $lang['events'] = 'Events';
 $lang['recruitment'] = 'Recruitment';
 $lang['library'] = 'Library';
+$lang['lessons'] = 'Lessons';
 $lang['contact'] = 'Contact';
 
 // Introduce

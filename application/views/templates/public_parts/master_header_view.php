@@ -151,7 +151,17 @@
                         <li><a href="<?php echo site_url('advice'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
                         <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
                         <li><a href="<?php echo site_url('recruitment'); ?>"><?php echo $this->lang->line('recruitment'); ?></a></li>
-                        <li><a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('library'); ?></a></li>
+                        <li>
+                            <a href=""><?php echo $this->lang->line('library'); ?> </a>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('lessons'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('video'); ?>">Video</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li><a href="<?php echo site_url('contact'); ?>"><?php echo $this->lang->line('contact'); ?></a></li>
                     </ul>
                 </nav>
@@ -192,7 +202,17 @@
                             <li><a href="<?php echo site_url('advice/index/1'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
                             <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
                             <li><a href="<?php echo site_url('recruitment'); ?>"><?php echo $this->lang->line('recruitment'); ?></a></li>
-                            <li><a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('library'); ?></a></li>
+                            <li>
+                                <a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('library'); ?></a>
+                                <ul class="">
+                                    <li>
+                                        <a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('lessons'); ?></a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url('video'); ?>">Video</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><a href="<?php echo site_url('contact'); ?>"><?php echo $this->lang->line('contact'); ?></a></li>
                             <li><a href="<?php echo $url_en; ?>">e</a> | <a href="<?php echo $url_vi; ?>">V</a></li>
                         </ul>

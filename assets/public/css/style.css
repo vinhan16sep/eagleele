@@ -155,14 +155,49 @@ nav{
 	text-align: center;
 }
 
-nav ul{
+nav > ul{
 	padding-left: 0;
 }
 
-nav ul li{
+nav > ul > li{
 	display: inline-block;
 	font-size: 1.25em;
 	padding: 5px 10px;
+
+	position: relative;
+}
+
+nav ul > li > ul{
+	width: 100px;
+
+	position: absolute;
+	top: 110%;
+	left: 0;
+	z-index: 999;
+
+	background-color: #fff;
+
+	border: 1px solid rgb(237,155,32);
+
+	display: none;
+}
+
+nav > ul > li:hover >ul{
+	top: 100%;
+	display: block;
+}
+
+nav ul > li > ul > li{
+	text-align: left;
+	font-size: 1.125em;
+
+	border-bottom: 1px solid rgb(237,155,32);
+
+	padding: 7px;
+}
+
+nav ul > li > ul > li:last-of-type{
+	border-bottom: none;
 }
 
 .header img{

@@ -17,6 +17,7 @@ $lang['training'] = 'Dự án đào tạo';
 $lang['events'] = 'Tin tức - Sự kiện';
 $lang['recruitment'] = 'Tuyển dụng';
 $lang['library'] = 'Thư viện';
+$lang['lessons'] = 'Bài học';
 $lang['contact'] = 'Liên hệ';
 
 // Introduce
