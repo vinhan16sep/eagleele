@@ -77,12 +77,26 @@ class Introduce extends Public_Controller {
         $this->render('teachers_view');
 	}
 
-    public function detail_teacher($id = null){
+    public function detail_teacher($slug = null){
         $this->load->model('teacher_model');
         $request_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $this->data['current_link'] = 'detail_teacher';
-        $this->data['teacher_id'] = $request_id;
-        $this->data['teacher'] = $this->teacher_model->get_by_id($request_id, $this->data['lang']);
+        $teacher = $this->teacher_model->get_by_id($slug, $this->data['lang']);
+        $this->data['teacher'] = $teacher;
+//        print_r($teacher);die;
+
+        switch ($teacher['teacher_language']){
+            case 'vi':
+                $this->data['teacher_slug_vi'] = $slug;
+                $teacher_language = $this->teacher_model->get_id($teacher['id'], 'en');
+                $this->data['teacher_slug_en'] = $teacher_language['slug'];
+                break;
+            case 'en':
+                $this->data['teacher_slug_en'] = $slug;
+                $teacher_language = $this->teacher_model->get_id($teacher['id'], 'vi');
+                $this->data['teacher_slug_vi'] = $teacher_language['slug'];
+                break;
+        };
 
         if (!$this->data['teacher']) {
             redirect('', 'refresh');
@@ -107,12 +121,26 @@ class Introduce extends Public_Controller {
         $this->render('partners_view');
     }
 
-    public function detail_partner($id = null){
+    public function detail_partner($slug = null){
         $this->load->model('partner_model');
         $request_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $this->data['current_link'] = 'detail_partner';
-        $this->data['partner_id'] = $request_id;
-        $this->data['partner'] = $this->partner_model->get_by_id($request_id, $this->data['lang']);
+        $partner = $this->partner_model->get_by_id($slug, $this->data['lang']);
+        $this->data['partner'] = $partner;
+//        print_r($partner);die;
+
+        switch ($partner['partner_language']){
+            case 'vi':
+                $this->data['partner_slug_vi'] = $slug;
+                $partner_language = $this->partner_model->get_id($partner['id'], 'en');
+                $this->data['partner_slug_en'] = $partner_language['slug'];
+                break;
+            case 'en':
+                $this->data['partner_slug_en'] = $slug;
+                $partner_language = $this->partner_model->get_id($partner['id'], 'vi');
+                $this->data['partner_slug_vi'] = $partner_language['slug'];
+                break;
+        };
 
         if (!$this->data['partner']) {
             redirect('', 'refresh');

@@ -82,21 +82,22 @@ class Library_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('library.*, GROUP_CONCAT(library_lang.title ORDER BY library_lang.language separator \'|||\') as library_title, 
                             GROUP_CONCAT(library_lang.slug ORDER BY library_lang.language separator \'|||\') as library_slug,
                             GROUP_CONCAT(library_lang.meta_description ORDER BY library_lang.language separator \'|||\') as library_meta_description,
                             GROUP_CONCAT(library_lang.meta_keywords ORDER BY library_lang.language separator \'|||\') as library_meta_keywords,
                             GROUP_CONCAT(library_lang.description ORDER BY library_lang.language separator \'|||\') as library_description,
-                            GROUP_CONCAT(library_lang.content ORDER BY library_lang.language separator \'|||\') as library_content');
+                            GROUP_CONCAT(library_lang.content ORDER BY library_lang.language separator \'|||\') as library_content,
+                            GROUP_CONCAT(library_lang.language ORDER BY library_lang.language separator \'|||\') as library_language');
         $this->db->from('library');
         $this->db->join('library_lang', 'library_lang.library_id = library.id', 'left');
         if($lang != ''){
             $this->db->where('library_lang.language', $lang);
         }
         $this->db->where('library.is_deleted', 0);
-        $this->db->where('library.id', $id);
+        $this->db->where('library_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -154,11 +155,11 @@ class Library_model extends CI_Model {
         return $this->db->update('library', $set_delete);
     }
 
-    public function get_id($id) {
+    public function get_id($id, $language = 'vi') {
         $this->db->select('*');
         $this->db->from('library_lang');
         $this->db->where('library_id', $id);
-        $this->db->where('language', 'vi');
+        $this->db->where('language', $language);
         $this->db->order_by("id", "desc");
 
         return $result = $this->db->get()->row_array();
@@ -178,6 +179,15 @@ class Library_model extends CI_Model {
             $temp_slug = $slug . '-' . (++$count);
         }
         return $temp_slug;
+    }
+
+    public function get_slug($slug) {
+        $this->db->select('*');
+        $this->db->from('library_lang');
+        $this->db->where('slug', $slug);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }

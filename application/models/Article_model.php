@@ -69,7 +69,7 @@ class Article_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('article.*, GROUP_CONCAT(article_lang.title ORDER BY article_lang.language separator \'|||\') as article_title, 
                             GROUP_CONCAT(article_lang.slug ORDER BY article_lang.language separator \'|||\') as article_slug,
@@ -80,14 +80,15 @@ class Article_model extends CI_Model {
                             GROUP_CONCAT(article_lang.event_cost ORDER BY article_lang.language separator \'|||\') as article_cost,
                             GROUP_CONCAT(article_lang.event_time ORDER BY article_lang.language separator \'|||\') as article_time,
                             GROUP_CONCAT(article_lang.event_location ORDER BY article_lang.language separator \'|||\') as article_location,
-                            GROUP_CONCAT(article_lang.event_address ORDER BY article_lang.language separator \'|||\') as article_address');
+                            GROUP_CONCAT(article_lang.event_address ORDER BY article_lang.language separator \'|||\') as article_address,
+                            GROUP_CONCAT(article_lang.language ORDER BY article_lang.language separator \'|||\') as article_language');
         $this->db->from('article');
         $this->db->join('article_lang', 'article_lang.article_id = article.id', 'left');
         if($lang != ''){
             $this->db->where('article_lang.language', $lang);
         }
         $this->db->where('article.is_deleted', 0);
-        $this->db->where('article.id', $id);
+        $this->db->where('article_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -158,11 +159,11 @@ class Article_model extends CI_Model {
         return $this->db->update('article', $set_delete);
     }
 
-    public function get_id($id) {
+    public function get_id($id, $language = 'vi') {
         $this->db->select('*');
         $this->db->from('article_lang');
         $this->db->where('article_id', $id);
-        $this->db->where('language', 'vi');
+        $this->db->where('language', $language);
         $this->db->order_by("id", "desc");
 
         return $result = $this->db->get()->row_array();
@@ -182,6 +183,15 @@ class Article_model extends CI_Model {
             $temp_slug = $slug . '-' . (++$count);
         }
         return $temp_slug;
+    }
+
+    public function get_slug($slug) {
+        $this->db->select('*');
+        $this->db->from('article_lang');
+        $this->db->where('slug', $slug);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }

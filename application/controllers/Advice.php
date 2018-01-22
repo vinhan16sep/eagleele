@@ -15,6 +15,7 @@ class Advice extends Public_Controller {
     public function index() {
         $this->data['current_link'] = 'list_advice';
         $this->data['advices'] = $this->advice_model->get_all_by_language($this->data['lang']);
+//        print_r($this->data['advices']);die;
 
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Tuyển dụng' : 'advice';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Tư vấn' : 'advice';
@@ -29,8 +30,8 @@ class Advice extends Public_Controller {
         $this->load->library('form_validation');
 
         $this->data['category'] = 'advice';
-
-        $where = array('category' => 'advice', 'detail_id' => $slug);
+        $detail_id = $this->advice_model->get_slug($slug);
+        $where = array('category' => 'advice', 'detail_id' => $detail_id['advice_id']);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
@@ -38,9 +39,22 @@ class Advice extends Public_Controller {
         $this->data['total_comment'] = $this->comment_model->count_all($where);
 
         $this->data['current_link'] = 'detail_advice';
-        $this->data['advice_id'] = $slug;
+
         $this->data['latest_advice'] = $this->advice_model->get_latest_article($this->data['lang']);
-        $this->data['advice'] = $this->advice_model->get_by_id($slug, $this->data['lang']);
+        $advice = $this->advice_model->get_by_id($slug, $this->data['lang']);
+        $this->data['advice'] = $advice;
+        switch ($advice['advice_language']){
+            case 'vi':
+                $this->data['advice_slug_vi'] = $slug;
+                $advice_language = $this->advice_model->get_id($advice['id'], 'en');
+                $this->data['advice_slug_en'] = $advice_language['slug'];
+                break;
+            case 'en':
+                $this->data['advice_slug_en'] = $slug;
+                $advice_language = $this->advice_model->get_id($advice['id'], 'vi');
+                $this->data['advice_slug_vi'] = $advice_language['slug'];
+                break;
+        };
 
         if (!$this->data['advice']) {
             redirect('', 'refresh');

@@ -29,7 +29,8 @@ class Project extends Public_Controller {
         $this->load->library('form_validation');
 
         $this->data['category_cmt'] = 'project';
-        $where = array('category' => 'project', 'detail_id' => $slug);
+        $detail_id = $this->project_model->get_slug($slug);
+        $where = array('category' => 'project', 'detail_id' => $detail_id['project_id']);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
@@ -37,9 +38,23 @@ class Project extends Public_Controller {
         $this->data['total_comment'] = $this->comment_model->count_all($where);
 
         $this->data['current_link'] = 'detail_project';
-        $this->data['project_id'] = $slug;
         $this->data['latest_project'] = $this->project_model->get_latest_article($this->data['lang']);
-        $this->data['project'] = $this->project_model->get_by_id($slug, $this->data['lang']);
+        $project = $this->project_model->get_by_id($slug, $this->data['lang']);
+        $this->data['project'] = $project;
+//        print_r($project);die;
+
+        switch ($project['project_language']){
+            case 'vi':
+                $this->data['project_slug_vi'] = $slug;
+                $project_language = $this->project_model->get_id($project['id'], 'en');
+                $this->data['project_slug_en'] = $project_language['slug'];
+                break;
+            case 'en':
+                $this->data['project_slug_en'] = $slug;
+                $project_language = $this->project_model->get_id($project['id'], 'vi');
+                $this->data['project_slug_vi'] = $project_language['slug'];
+                break;
+        };
 
         if (!$this->data['project']) {
             redirect('', 'refresh');

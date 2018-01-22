@@ -37,7 +37,7 @@
                 <div class="grid-item all <?php echo $type[$item['type']]; ?>">
                     <div class="inner">
                         <img src="<?php echo base_url('assets/upload/library/' . $item['description_image']); ?>">
-                        <a href="<?php echo site_url('library/detail/' . $item['library_id']); ?>">
+                        <a href="<?php echo site_url('library/detail/' . $item['slug']); ?>">
                             <label><?php echo $item['title']; ?></label>
                         </a>
                         <p><?php echo $item['description']; ?></p>

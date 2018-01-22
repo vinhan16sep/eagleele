@@ -14,7 +14,7 @@
                 <h2 class="headline"><?php echo $item['title']; ?></h2>
 
                 <p><?php echo $item['description']; ?></p>
-                <a class="btn btn-default btn-fill" href="<?php echo site_url('article/detail/' . $item['article_id']); ?>" role="button">
+                <a class="btn btn-default btn-fill" href="<?php echo site_url('article/detail/' . $item['slug']); ?>" role="button">
                     <?php echo $this->lang->line('read_more') ?>
                 </a>
             </div>

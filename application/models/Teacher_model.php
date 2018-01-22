@@ -69,21 +69,22 @@ class Teacher_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('teacher.*, GROUP_CONCAT(teacher_lang.name ORDER BY teacher_lang.language separator \'|||\') as teacher_name, 
                             GROUP_CONCAT(teacher_lang.slug ORDER BY teacher_lang.language separator \'|||\') as teacher_slug,
                             GROUP_CONCAT(teacher_lang.meta_description ORDER BY teacher_lang.language separator \'|||\') as teacher_meta_description,
                             GROUP_CONCAT(teacher_lang.meta_keywords ORDER BY teacher_lang.language separator \'|||\') as teacher_meta_keywords,
                             GROUP_CONCAT(teacher_lang.position ORDER BY teacher_lang.language separator \'|||\') as teacher_position,
-                            GROUP_CONCAT(teacher_lang.bio ORDER BY teacher_lang.language separator \'|||\') as teacher_bio');
+                            GROUP_CONCAT(teacher_lang.bio ORDER BY teacher_lang.language separator \'|||\') as teacher_bio,
+                            GROUP_CONCAT(teacher_lang.language ORDER BY teacher_lang.language separator \'|||\') as teacher_language');
         $this->db->from('teacher');
         $this->db->join('teacher_lang', 'teacher_lang.teacher_id = teacher.id', 'left');
         if($lang != ''){
             $this->db->where('teacher_lang.language', $lang);
         }
         $this->db->where('teacher.is_deleted', 0);
-        $this->db->where('teacher.id', $id);
+        $this->db->where('teacher_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -142,6 +143,16 @@ class Teacher_model extends CI_Model {
             $temp_slug = $slug . '-' . (++$count);
         }
         return $temp_slug;
+    }
+
+    public function get_id($id, $language = 'vi') {
+        $this->db->select('*');
+        $this->db->from('teacher_lang');
+        $this->db->where('teacher_id', $id);
+        $this->db->where('language', $language);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }

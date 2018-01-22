@@ -26,14 +26,14 @@ class Library extends Public_Controller {
         $this->render('library_view');
     }
 
-    public function detail($id = null){
+    public function detail($slug = null){
         $this->load->model('comment_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
 
         $this->data['category'] = 'library';
-
-        $where = array('category' => 'library', 'detail_id' => $id);
+        $detail_id = $this->library_model->get_slug($slug);
+        $where = array('category' => 'library', 'detail_id' => $detail_id['library_id']);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
@@ -44,8 +44,21 @@ class Library extends Public_Controller {
         $this->data['current_link'] = 'detail_library';
         $this->data['library_id'] = $request_id;
 
-        $library = $this->library_model->get_by_id($request_id, $this->_lang);
+        $library = $this->library_model->get_by_id($slug, $this->_lang);
         $this->data['library'] = $library;
+//        print_r($library);die;
+        switch ($library['library_language']){
+            case 'vi':
+                $this->data['library_slug_vi'] = $slug;
+                $library_language = $this->library_model->get_id($library['id'], 'en');
+                $this->data['library_slug_en'] = $library_language['slug'];
+                break;
+            case 'en':
+                $this->data['library_slug_en'] = $slug;
+                $library_language = $this->library_model->get_id($library['id'], 'vi');
+                $this->data['library_slug_vi'] = $library_language['slug'];
+                break;
+        };
 
         if (!$this->data['library']) {
             redirect('', 'refresh');

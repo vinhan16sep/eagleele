@@ -69,20 +69,21 @@ class Partner_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('partner.*, GROUP_CONCAT(partner_lang.name ORDER BY partner_lang.language separator \'|||\') as partner_name, 
                             GROUP_CONCAT(partner_lang.slug ORDER BY partner_lang.language separator \'|||\') as partner_slug,
                             GROUP_CONCAT(partner_lang.meta_description ORDER BY partner_lang.language separator \'|||\') as partner_meta_description,
                             GROUP_CONCAT(partner_lang.meta_keywords ORDER BY partner_lang.language separator \'|||\') as partner_meta_keywords,
-                            GROUP_CONCAT(partner_lang.content ORDER BY partner_lang.language separator \'|||\') as partner_content');
+                            GROUP_CONCAT(partner_lang.content ORDER BY partner_lang.language separator \'|||\') as partner_content,
+                            GROUP_CONCAT(partner_lang.language ORDER BY partner_lang.language separator \'|||\') as partner_language');
         $this->db->from('partner');
         $this->db->join('partner_lang', 'partner_lang.partner_id = partner.id', 'left');
         if($lang != ''){
             $this->db->where('partner_lang.language', $lang);
         }
         $this->db->where('partner.is_deleted', 0);
-        $this->db->where('partner.id', $id);
+        $this->db->where('partner_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -125,6 +126,16 @@ class Partner_model extends CI_Model {
         $this->db->where('id', $id);
 
         return $this->db->update('partner', $set_delete);
+    }
+
+    public function get_id($id, $language = 'vi') {
+        $this->db->select('*');
+        $this->db->from('partner_lang');
+        $this->db->where('partner_id', $id);
+        $this->db->where('language', $language);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }
