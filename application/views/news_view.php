@@ -10,9 +10,8 @@
                 <img src="<?php echo base_url('assets/upload/article/' . $item['description_image']); ?>">
             </div>
             <div class="left col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                <div class="content-title">
-                    <h2><?php echo $item['title']; ?></h2>
-                </div>
+                <h2><?php echo $item['title']; ?></h2>
+
                 <p><?php echo $item['description']; ?></p>
                 <a class="btn btn-default btn-fill" href="<?php echo site_url('article/detail/' . $item['article_id']); ?>" role="button">
                     <?php echo $this->lang->line('read_more') ?>

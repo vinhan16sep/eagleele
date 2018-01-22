@@ -6,19 +6,22 @@
             <?php
             echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'contact-form'));
             ?>
-			<div class="content-title">
+            <h2 class="headline"><?php echo $this->lang->line('contact_info'); ?></h2>
+			<!--<div class="content-title">
 				<h2><?php echo $this->lang->line('contact_info'); ?></h2>
-			</div>
+			</div>-->
 			<ul>
 				<li><?php echo $this->lang->line('contact_address_info'); ?></li>
 				<li><?php echo $this->lang->line('contact_phone'); ?>: <?php echo $this->lang->line('contact_phone_info'); ?></li>
 				<li><?php echo $this->lang->line('contact_hotline'); ?>: <?php echo $this->lang->line('contact_hotline_info'); ?></li>
 				<li><?php echo $this->lang->line('contact_email_info'); ?>: <?php echo $this->lang->line('contact_our_mail'); ?></li>
 			</ul>
-			
-			<div class="content-title">
+
+
+            <h2 class="headline"><?php echo $this->lang->line('contact_email'); ?></h2>
+			<!--<div class="content-title">
 				<h2><?php echo $this->lang->line('contact_email'); ?></h2>
-			</div>
+			</div>-->
 			<div class="contact-form">
                 <?php
                 echo form_label($this->lang->line('contact_email_name') . '(*)', 'name');

@@ -494,6 +494,12 @@ footer{
 	margin-top: 50px;
 }
 
+footer .content-title h2:before,
+footer .content-title h2:after{
+	border-bottom: none !important;
+	border-top: none !important;
+}
+
 footer .content-title{
 	color: #fff;
 }
