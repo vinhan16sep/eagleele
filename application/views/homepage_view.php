@@ -1,6 +1,6 @@
 <!-- InstanceBeginEditable name="content" -->
 
-<section class="main-content container">
+<section class="">
     <div id="index-slide" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -12,14 +12,14 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <?php if($banners): ?>
-            <?php foreach($banners as $key => $item): ?>
-                <div class="item <?php echo ($key == 0) ? 'active' : ''; ?>">
-                    <a href="<?php echo $item['url']; ?>"><img src="<?php echo base_url('assets/upload/banner/' . $item['image']); ?>" alt="<?php echo $item['text']; ?>"></a>
-                    <!--<div class="carousel-caption">
+                <?php foreach($banners as $key => $item): ?>
+                    <div class="item <?php echo ($key == 0) ? 'active' : ''; ?>">
+                        <a href="<?php echo $item['url']; ?>"><img src="<?php echo base_url('assets/upload/banner/' . $item['image']); ?>" alt="<?php echo $item['text']; ?>"></a>
+                        <!--<div class="carousel-caption">
                         <?php echo $item['text']; ?>
                     </div>-->
-                </div>
-            <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
             <?php endif; ?>
         </div>
 
@@ -33,6 +33,10 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+</section>
+
+<section class="main-content container">
+
     <div class="row">
         <div class="index-course col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="content-title">
