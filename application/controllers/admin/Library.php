@@ -26,7 +26,14 @@ class Library extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $this->data['libraries'] = $this->library_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->library_model->get_all_with_pagination($per_page, $this->data['page']);
+
+        $output = array();
+        foreach($result as $key => $value){
+            $output[$key]['id'] = $value['id'];
+            $output[$key]['data'] = $this->library_model->get_by_id($value['id']);
+        }
+        $this->data['libraries'] = $output;
 
         $this->render('admin/library/list_library_view');
     }
@@ -54,12 +61,9 @@ class Library extends Admin_Controller {
             $this->render('admin/library/create_library_view');
         } else {
             if ($this->input->post()) {
-//                echo '<pre>';
-//                print_r($this->input->post());die;
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/library', 'assets/upload/library/thumb');
 
                 $data = array(
-                    'type' => $this->input->post('type'),
                     'description_image' => $image,
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
@@ -153,7 +157,6 @@ class Library extends Admin_Controller {
             if ($this->input->post()) {
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/library', 'assets/upload/library/thumb');
                 $data = array(
-                    'type' => $this->input->post('type'),
                     'description_image' => $image,
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']

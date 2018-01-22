@@ -18,31 +18,12 @@
         </div>
 
         <div class="content col-lg-9 col-md-9 col-sm-9 col-xs-12">
-            <div class="grid">
-                <div class="grid-sizer"></div>
-                <?php
-                    $type = array(
-                        //0 => 'teach',
-                        //1 => 'study',
-                        //2 => 'life',
-                        //3 => 'book'
-                        0 => 'video',
-                        1 => 'image',
-                        2 => 'study',
-                        3 => 'share'
-                    );
-                ?>
-                <?php if($libraries): ?>
-                <?php foreach($libraries as $item): ?>
-                <div class="grid-item all <?php echo $type[$item['type']]; ?>">
-                    <div class="inner">
-                        <img src="<?php echo base_url('assets/upload/library/' . $item['description_image']); ?>">
-                        <a href="<?php echo site_url('library/detail/' . $item['library_id']); ?>">
+                <?php if($videos): ?>
+                <?php foreach($videos as $item): ?>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <iframe src="<?php echo $item['url']; ?>" frameborder="0" allowfullscreen style="width:100%;"></iframe>
                             <label><?php echo $item['title']; ?></label>
-                        </a>
-                        <p><?php echo $item['description']; ?></p>
-                    </div>
-                </div>
+                        </div>
                 <?php endforeach; ?>
                 <?php endif; ?>
             </div>

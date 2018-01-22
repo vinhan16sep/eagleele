@@ -152,7 +152,7 @@
                         <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
                         <li><a href="<?php echo site_url('recruitment'); ?>"><?php echo $this->lang->line('recruitment'); ?></a></li>
                         <li>
-                            <a href=""><?php echo $this->lang->line('library'); ?> </a>
+                            <a href="javascript:void(0);"><?php echo $this->lang->line('library'); ?> </a>
                             <ul class="list-unstyled">
                                 <li>
                                     <a href="<?php echo site_url('library'); ?>"><?php echo $this->lang->line('lessons'); ?></a>
