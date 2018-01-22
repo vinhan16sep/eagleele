@@ -42,9 +42,17 @@
         </div>
     </div>
 </footer>
-<div class="scrollup">
-    <i class="fa fa-chevron-up fa-3x"></i>
+
+<div class="fixed">
+    <ul class="list-unstyled list-inline">
+        <li><i class="fa fa-chevron-up fa-2x scrollup" data-toggle="tooltip" data-placement="top" title="Trở về đầu trang"></i></li>
+        <li><i class="fa fa-comment-o fa-2x chatbox" data-toggle="tooltip" data-placement="top" title="Gửi tin nhắn"></i></li>
+        <li>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEAGLEELE%2F&tabs=messages&width=300&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=504743766549751" width="300" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </li>
+    </ul>
 </div>
+
 <div class="modal fade" tabindex="-1" role="dialog" id="introModal">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -62,7 +70,13 @@
     <?php if($show_intro_popup == 1): ?>
         $('#introModal').modal('show');
     <?php endif; ?>
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
 </script>
+<script src="<?php site_url('assets/public/js/facebook_chat.js') ?>"></script>
 <!-- InstanceBeginEditable name="addition" -->
 <!-- InstanceEndEditable -->
 <!-- InstanceEnd --></html>
