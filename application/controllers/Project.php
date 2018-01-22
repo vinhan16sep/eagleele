@@ -28,9 +28,8 @@ class Project extends Public_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->data['category'] = $this->uri->segment(1);
-
-        $where = array('category' => $this->uri->segment(1), 'detail_id' => $this->uri->segment(3));
+        $this->data['category_cmt'] = 'project';
+        $where = array('category' => 'project', 'detail_id' => $slug);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;

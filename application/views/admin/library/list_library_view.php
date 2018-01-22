@@ -40,7 +40,8 @@
                     ?>
                     <td><span><?php echo $type; ?></span></td>
                     <?php
-                    echo '<td>' . anchor('admin/library/edit/' . $item['library_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo '<td>' . anchor('admin/comment/index/library/' . $item['library_id'][0], '<span class="glyphicon glyphicon-comment"></span>');
+                    echo '' . anchor('admin/library/edit/' . $item['library_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
                     echo ' ' . anchor('admin/library/delete/' . $item['library_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;
