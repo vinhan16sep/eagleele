@@ -580,14 +580,25 @@ footer .right table{
 	margin-top: 40px;
 }
 
-.scrollup {
-    padding: 10px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    display: none;
+/*
+
+=========== OTHERS ===========
+
+ */
+
+.fixed{
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+}
+
+.fixed ul li > i{
+	padding: 5px;
 	text-align: center;
-    background: rgba(237,155,32,1);
+	border-radius: 5px;
+
+	color: #fff;
+	background: rgba(237,155,32,1);
 	background: -moz-linear-gradient(45deg, rgba(237,155,32,1) 0%, rgba(205,109,0,1) 100%);
 	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(237,155,32,1)), color-stop(100%, rgba(205,109,0,1)));
 	background: -webkit-linear-gradient(45deg, rgba(237,155,32,1) 0%, rgba(205,109,0,1) 100%);
@@ -595,10 +606,16 @@ footer .right table{
 	background: -ms-linear-gradient(45deg, rgba(237,155,32,1) 0%, rgba(205,109,0,1) 100%);
 	background: linear-gradient(45deg, rgba(237,155,32,1) 0%, rgba(205,109,0,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed9b20', endColorstr='#cd6d00', GradientType=1 );
-	color: #fff;
-	border-radius: 5px;
 }
 
-.scrollup:hover{
+.fixed ul li > i:hover{
 	cursor: pointer;
+}
+
+.fixed iframe{
+	display: none;
+}
+
+.fixed iframe.active{
+	display:  block;
 }

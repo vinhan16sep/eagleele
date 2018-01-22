@@ -20,6 +20,7 @@
                     echo '<tr>';
                     echo '<td>' . str_replace('|||', ' | ', $item['data']['advice_title']) . '</td>';
                     echo '<td>';
+                    echo anchor('admin/comment/index/advice/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');
                     echo '<a href="' . base_url('admin/advice/edit/' . $item['id']) . '">';
                     echo '<span class="glyphicon glyphicon-pencil"></span>';
                     echo '</a>';

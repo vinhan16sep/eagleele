@@ -72,8 +72,9 @@
                         <span class="content_error" style="color: red"></span>
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <input type="hidden" name="category" value="<?php echo $category ?>" id="category">
+                        <input type="hidden" name="category" value="<?php echo $category_cmt ?>" id="category">
                         <input type="hidden" name="id" value="<?php echo $project['id'] ?>" id="id">
+                        <input type="hidden" name="url" value="<?php echo base_url('project/detail/'.$project['id']) ?>" id="url">
                         <?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward submit-comment"'); ?>
                     </div>
                 </div>
@@ -112,5 +113,18 @@
 
 </section>
 <script src="<?php echo site_url('assets/public/js/comment.js'); ?>"></script>
+<script>
+//    var url_base = location.protocol + "//" + location.host + (location.port ? ':' + location.port : '');
+//    $(document).each(function () {
+//        var category = $('#category').val();
+//        var url = $('#url').val();
+//        jQuery.ajax({
+//            type: "get",
+//            url: url,
+//            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+//            data: {category : category}
+//        })
+//    })
+</script>
 
 <!-- InstanceEndEditable -->

@@ -26,7 +26,8 @@
                     ?>
                     <td><span><?php echo ($item['status'][0] == 0) ? 'Hết hạn' : 'Đang tuyển' ?></span></td>
                     <?php
-                    echo '<td>' . anchor('admin/recruitment/edit/' . $item['recruitment_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo '<td>' . anchor('admin/comment/index/recruitment/' . $item['recruitment_id'][0], '<span class="glyphicon glyphicon-comment"></span>');
+                    echo ' ' . anchor('admin/recruitment/edit/' . $item['recruitment_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
                     echo ' ' . anchor('admin/recruitment/delete/' . $item['recruitment_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;

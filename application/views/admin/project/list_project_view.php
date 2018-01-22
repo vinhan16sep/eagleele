@@ -23,6 +23,7 @@
 //                        echo '<td><input type="checkbox" id="' . $item['id'] . '" class="checkbox" name="checkbox[' . $item['id'] . ']" /></td>';
                         echo '<td>' . str_replace('|||', ' | ', $item['data']['project_title']) . '</td>';
                         echo '<td>';
+                        echo anchor('admin/comment/index/project/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');
                         echo '<a href="' . base_url('admin/project/edit/' . $item['id']) . '">';
                         echo '<span class="glyphicon glyphicon-pencil"></span>';
                         echo '</a>';

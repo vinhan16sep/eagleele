@@ -25,5 +25,22 @@ $(document).ready(function () {
     if ($(window).scrollTop() < 100) {
       $('.header').removeClass('header-fixed');
     }
-  });
+    });
+
+
+    var i = 0;
+
+
+    $('i.chatbox').click(function(){
+        if (i == 0) {
+            $('.fixed i.chatbox').removeClass('fa-comment-o').addClass('fa-close');
+            i = 1;
+            $('.fixed iframe').addClass('active');
+        } else {
+            $('.fixed i.chatbox').removeClass('fa-close').addClass('fa-comment-o');
+            i = 0;
+            $('.fixed iframe').removeClass('active');
+        }
+    });
+
 });
