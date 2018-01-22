@@ -143,6 +143,8 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'vi');
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
+
+        $this->data['show_intro_popup'] = false;
         
     }
 
