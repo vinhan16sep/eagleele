@@ -1,0 +1,22 @@
+section.container-fluid{
+    background-color: #fafafa;
+
+    background-image: url(../img/homepage_bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding-bottom: 50px;
+}
+
+.main-content .shadow{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 15px;
+
+    background: #fff;
+    box-shadow: 2px 2px 15px #e4e4e4;
+    -webkit-box-shadow: 2px 2px 15px #e4e4e4;
+    -moz-box-shadow: 2px 2px 15px #e4e4e4;
+    -o-box-shadow: 2px 2px 15px #e4e4e4;
+}
