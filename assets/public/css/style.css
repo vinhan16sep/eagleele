@@ -25,16 +25,16 @@ p{font-size:1em;}
 	position: relative;
 }
 
-.content-title h2:before,
-.content-title h2:after{
-	content: "";
-	position: absolute;
-	height: 5px;
-	border-bottom: 2px solid rgb(237,155,32);
-	border-top: 2px solid rgb(237,155,32);
-	top: 15px;
-	width: 50px;
-}
+/*.content-title h2:before,*/
+/*.content-title h2:after{*/
+	/*content: "";*/
+	/*position: absolute;*/
+	/*height: 5px;*/
+	/*border-bottom: 2px solid rgb(237,155,32);*/
+	/*border-top: 2px solid rgb(237,155,32);*/
+	/*top: 15px;*/
+	/*width: 50px;*/
+/*}*/
 
 .content-title h2:before{
 	right: 100%;
@@ -161,8 +161,11 @@ nav > ul{
 
 nav > ul > li{
 	display: inline-block;
-	font-size: 1.25em;
-	padding: 5px 10px;
+
+	font-size: 1.1em;
+	text-transform: uppercase;
+
+	padding: 5px 7px;
 
 	position: relative;
 }
@@ -269,15 +272,6 @@ nav ul > li > ul > li:last-of-type{
 .slide .carousel-inner .carousel-caption{
 	bottom:30%;
 	font-size: 1.5em;
-}
-
-#index-about{
-	padding: 15px;
-	background: #fff;
-	box-shadow: 2px 2px 15px #e4e4e4;
-	-webkit-box-shadow: 2px 2px 15px #e4e4e4;
-	-moz-box-shadow: 2px 2px 15px #e4e4e4;
-	-o-box-shadow: 2px 2px 15px #e4e4e4;
 }
 
 .index-course img{
@@ -536,7 +530,6 @@ footer{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed9b20', endColorstr='#cd6d00', GradientType=1 );
 	padding-top: 20px;
 	padding-bottom: 30px;
-	margin-top: 50px;
 }
 
 footer .content-title h2:before,

@@ -1,4 +1,4 @@
-<!-- InstanceBeginEditable name="content" -->
+<link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/homepage.css'); ?>">
 
 <section class="">
     <div id="index-slide" class="carousel slide" data-ride="carousel">
@@ -35,283 +35,278 @@
     </div>
 </section>
 
-<section class="main-content container">
-    <div class="row" id="index-about">
-        <div class="index-about col-md-8 col-sm-8 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_about_us'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <?php if($lang == 'vi'): ?>
-                <p>Công ty cổ phần EAGLE ELE, tên thương hiệu EAGLE ELE được thành lập và vận hành bởi những chuyên gia có nhiều năm kinh nghiệm chuyên môn thực tiễn, có kỹ năng chuyên sâu về công nghệ truyền thông, dịch vụ đào tạo và tham vấn tư vấn cùng đam mê, nhiệt huyết chia sẻ.</p>
-            <?php elseif($lang == 'en'): ?>
-                <p>EAGLE ELE company is established and operated by professionals with years of professional experience, specialized in communications technology, training and consulting services. consultant with passion, enthusiasm share.</p>
-            <?php  endif; ?>
-        </div>
-        <div class="index-about col-md-4 col-sm-4 col-xs-12">
-            <a href="<?php echo site_url('introduce'); ?>"><img src="<?php echo base_url('assets/public/img/logo.png'); ?>"></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="index-course col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_event'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <?php for($i = 0; $i < 3; $i++) { ?>
-                <?php if(isset($events[$i])): ?>
-                    <div class="index-coach-left-item col-md-4 col-sm-12 col-xs-12">
-                        <img src="<?php echo base_url('assets/upload/article/' . $events[$i]['description_image']); ?>">
-                        <a href="<?php echo site_url('article/detail/' . $events[$i]['article_id']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
-                    </div>
-                <?php endif; ?>
-            <?php } ?>
-
-            <!--<div class="visible-xs">
-                <div class="course-xs col-xs-12">
-                    <h4 class="headline">30/7/2017</h4>
-                    <h4 class="headline">Hà Nội</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis est quam, id posuere nibh facilisis sed. Cras egestas commodo magna quis porttitor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam ac lorem nec justo condimentum mollis.</p>
-                    <a class="btn btn-default" href="#" role="button">
-                        <?php echo $this->lang->line('index_read_detail'); ?>
-                    </a>
-                </div>
-
-                <div class="course-xs col-xs-12">
-                    <h4 class="headline">30/7/2017</h4>
-                    <h4 class="headline">Hà Nội</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis est quam, id posuere nibh facilisis sed. Cras egestas commodo magna quis porttitor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam ac lorem nec justo condimentum mollis.</p>
-                    <a class="btn btn-default" href="#" role="button">
-                        <?php echo $this->lang->line('index_read_detail'); ?>
-                    </a>
-                </div>
-
-                <div class="course-xs col-xs-12">
-                    <h4 class="headline">30/7/2017</h4>
-                    <h4 class="headline">Hà Nội</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis est quam, id posuere nibh facilisis sed. Cras egestas commodo magna quis porttitor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam ac lorem nec justo condimentum mollis.</p>
-                    <a class="btn btn-default" href="#" role="button">
-                        <?php echo $this->lang->line('index_read_detail'); ?>
-                    </a>
-                </div>
-            </div>-->
-        </div>
-        <div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
-            <?php if(isset($video[0])): ?>
-            <div class="content-title">
-                <h2>Video</h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="index-video">
-                <!--
-                    Allow embed a youtube video into homepage, change link in src. All style fixed.
-                -->
-
-                <iframe src="<?php echo $video[0]['url']; ?>" frameborder="0" allowfullscreen></iframe>
-
-            </div>
-            <?php endif; ?>
-<!--            <div class="index-banner">-->
-<!--                <a href="javascript:void(0);">-->
-<!--                    <img src="--><?php //echo base_url('assets/public/img/banner/index_banner.jpg') ?><!--">-->
-<!--                </a>-->
-<!--            </div>-->
-        </div>
-        <div class="index-coach col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_coach'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="index-coach-left col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <?php for($i = 0; $i < 4; $i++) { ?>
-                    <?php if(isset($teachers[$i])): ?>
-                        <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <img src="<?php echo base_url('assets/upload/teacher/' . $teachers[$i]['description_image']); ?>">
-                            <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['teacher_id']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
-                            <p><?php echo $teachers[$i]['position']; ?></p>
+<section class="container-fluid">
+    <div class="main-content container">
+        <div class="" id="index-about">
+            <div class="shadow">
+                <div class="row">
+                    <div class="index-about col-md-8 col-sm-8 col-xs-12">
+                        <div class="content-title">
+                            <h2><?php echo $this->lang->line('index_about_us'); ?></h2>
+                            <div class="title-underline"></div>
                         </div>
+                        <?php if($lang == 'vi'): ?>
+                            <p>Công ty cổ phần EAGLE ELE, tên thương hiệu EAGLE ELE được thành lập và vận hành bởi những chuyên gia có nhiều năm kinh nghiệm chuyên môn thực tiễn, có kỹ năng chuyên sâu về công nghệ truyền thông, dịch vụ đào tạo và tham vấn tư vấn cùng đam mê, nhiệt huyết chia sẻ.</p>
+                        <?php elseif($lang == 'en'): ?>
+                            <p>EAGLE ELE company is established and operated by professionals with years of professional experience, specialized in communications technology, training and consulting services. consultant with passion, enthusiasm share.</p>
+                        <?php  endif; ?>
+                    </div>
+
+                    <div class="index-about col-md-4 col-sm-4 col-xs-12">
+                        <a href="<?php echo site_url('introduce'); ?>"><img src="<?php echo base_url('assets/public/img/logo.png'); ?>"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="index-course col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('index_event'); ?></h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="row">
+                    <?php for($i = 0; $i < 3; $i++) { ?>
+                        <?php if(isset($events[$i])): ?>
+                            <div class="index-coach-left-item col-md-4 col-sm-12 col-xs-12">
+                                <img src="<?php echo base_url('assets/upload/article/' . $events[$i]['description_image']); ?>">
+                                <a href="<?php echo site_url('article/detail/' . $events[$i]['article_id']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
+                            </div>
+                        <?php endif; ?>
+                    <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
+                <div class="shadow">
+                    <?php if(isset($video[0])): ?>
+                    <div class="content-title">
+                        <h2>Video</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="index-video">
+                        <!--
+                            Allow embed a youtube video into homepage, change link in src. All style fixed.
+                        -->
+
+                        <iframe src="<?php echo $video[0]['url']; ?>" frameborder="0" allowfullscreen></iframe>
+
+                    </div>
                     <?php endif; ?>
-                <?php } ?>
-            </div>
-            <div class="index-coach-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <?php if($lang == 'vi'): ?>
-                <label class="quote"> "Chúng tôi có những chuyên gia giỏi nhất"</label>
-                <p>Chúng tôi hợp tác với các chuyên gia kinh tế, các tổ chức nghiên cứu thị trường để có được những thông tin chính xác về thị trường nghiên cứu, lập kế hoạch, phát triển và thực hiện chiến lược tăng trưởng hiệu quả! </p>
-                <?php elseif($lang == 'en'): ?>
-                <label class="quote"> "We have the best experts"</label>
-                <p>We cooperate with economic experts and market research organizations to get accurate information about market research, planning, development and implementation of effective growth strategies!</p>
-                <?php  endif; ?>
-                <a class="btn btn-default btn-fill" href="<?php echo site_url('introduce/teachers'); ?>" role="button">
-                    <?php echo $this->lang->line('index_read_more'); ?>
-                </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_clients'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <div id="index-customers" class="carousel slide slide-customers" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#index-customers" data-slide-to="0" class="active"></li>
-                    <li data-target="#index-customers" data-slide-to="1"></li>
-                </ol>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-01.png'); ?>">
-                            </a>
+        <div class="row">
+            <div class="index-coach col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('index_coach'); ?></h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="row">
+                        <div class="index-coach-left col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <?php for($i = 0; $i < 4; $i++) { ?>
+                                <?php if(isset($teachers[$i])): ?>
+                                    <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <img src="<?php echo base_url('assets/upload/teacher/' . $teachers[$i]['description_image']); ?>">
+                                        <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['teacher_id']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
+                                        <p><?php echo $teachers[$i]['position']; ?></p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php } ?>
                         </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-02.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-03.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-04.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-05.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-06.png'); ?>">
+                        <div class="index-coach-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <?php if($lang == 'vi'): ?>
+                            <label class="quote"> "Chúng tôi có những chuyên gia giỏi nhất"</label>
+                            <p>Chúng tôi hợp tác với các chuyên gia kinh tế, các tổ chức nghiên cứu thị trường để có được những thông tin chính xác về thị trường nghiên cứu, lập kế hoạch, phát triển và thực hiện chiến lược tăng trưởng hiệu quả! </p>
+                            <?php elseif($lang == 'en'): ?>
+                            <label class="quote"> "We have the best experts"</label>
+                            <p>We cooperate with economic experts and market research organizations to get accurate information about market research, planning, development and implementation of effective growth strategies!</p>
+                            <?php  endif; ?>
+                            <a class="btn btn-default btn-fill" href="<?php echo site_url('introduce/teachers'); ?>" role="button">
+                                <?php echo $this->lang->line('index_read_more'); ?>
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('index_clients'); ?></h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div id="index-customers" class="carousel slide slide-customers" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#index-customers" data-slide-to="0" class="active"></li>
+                            <li data-target="#index-customers" data-slide-to="1"></li>
+                        </ol>
 
-                    <div class="item">
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-07.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-08.png'); ?>">
-                            </a>
-                        </div>
-                        <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                            <a href="#">
-                                <img src="<?php echo base_url('assets/public/img/logo-client-09.png'); ?>">
-                            </a>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-01.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-02.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-03.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-04.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-05.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-06.png'); ?>">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-07.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-08.png'); ?>">
+                                    </a>
+                                </div>
+                                <div class="index-books-item col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="<?php echo base_url('assets/public/img/logo-client-09.png'); ?>">
+                                    </a>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('library'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <ul>
-                <?php if($libraries): ?>
-                    <?php foreach($libraries as $item): ?>
-                        <li>
-                            <a href="<?php echo site_url('article/detail/' . $item['library_id']); ?>"><?php echo $item['title']; ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </ul>
-        </div>
-        <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_news'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <ul>
-                <?php if($news): ?>
-                <?php foreach($news as $item): ?>
-                    <li>
-                        <a href="<?php echo site_url('article/detail/' . $item['article_id']); ?>"><?php echo $item['title']; ?></a>
-                    </li>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </ul>
-        </div>
-
-        <div class="index-comment col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="content-title">
-                <h2><?php echo $this->lang->line('index_student_thinking'); ?></h2>
-                <div class="title-underline"></div>
-            </div>
-            <div id="index-comment" class="carousel slide slide-comment" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#index-comment" data-slide-to="0" class="active"></li>
-                    <li data-target="#index-comment" data-slide-to="1"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="index-comment-item">
-                            <div class="left">
-                                <img src="<?php echo base_url('assets/public/img/student-2.jpg'); ?>">
-                            </div>
-                            <div class="right">
-                                <?php if($lang == 'vi'): ?>
-                                <p>Tôi nhận được những giá trị vượt xa so với học phí, học xong giúp ích ngay cho công việc của tôi.</p>
-                                <p class="note">
-                                    Ngọc Anh <br>
-                                    Trưởng phòng Thiết kế Mato
-                                </p>
-                                <?php elseif($lang == 'en'): ?>
-                                <p>I get the value far beyond the tuition fee, learning to help immediately for my work.</p>
-                                <p class="note">
-                                    Ngoc Anh <br>
-                                    Head of Design Department Mato
-                                </p>
-                                <?php  endif; ?>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('library'); ?></h2>
+                        <div class="title-underline"></div>
                     </div>
+                    <ul>
+                        <?php if($libraries): ?>
+                            <?php foreach($libraries as $item): ?>
+                                <li>
+                                    <a href="<?php echo site_url('article/detail/' . $item['library_id']); ?>"><?php echo $item['title']; ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('index_news'); ?></h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <ul>
+                        <?php if($news): ?>
+                        <?php foreach($news as $item): ?>
+                            <li>
+                                <a href="<?php echo site_url('article/detail/' . $item['article_id']); ?>"><?php echo $item['title']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
 
-                    <div class="item">
-                        <div class="index-comment-item">
-                            <div class="left">
-                                <img src="<?php echo base_url('assets/public/img/student-1.jpg'); ?>">
+            <div class="index-comment col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="shadow">
+                    <div class="content-title">
+                        <h2><?php echo $this->lang->line('index_student_thinking'); ?></h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div id="index-comment" class="carousel slide slide-comment" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#index-comment" data-slide-to="0" class="active"></li>
+                            <li data-target="#index-comment" data-slide-to="1"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <div class="index-comment-item">
+                                    <div class="left">
+                                        <img src="<?php echo base_url('assets/public/img/student-2.jpg'); ?>">
+                                    </div>
+                                    <div class="right">
+                                        <?php if($lang == 'vi'): ?>
+                                        <p>Tôi nhận được những giá trị vượt xa so với học phí, học xong giúp ích ngay cho công việc của tôi.</p>
+                                        <p class="note">
+                                            Ngọc Anh <br>
+                                            Trưởng phòng Thiết kế Mato
+                                        </p>
+                                        <?php elseif($lang == 'en'): ?>
+                                        <p>I get the value far beyond the tuition fee, learning to help immediately for my work.</p>
+                                        <p class="note">
+                                            Ngoc Anh <br>
+                                            Head of Design Department Mato
+                                        </p>
+                                        <?php  endif; ?>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="right">
-                                <?php if($lang == 'vi'): ?>
-                                <p>Việc tương tác thường xuyên, chia sẻ cởi mở về bí quyết làm nghề và những ví dụ rất sát với thực tế giúp mình ứng dụng ngay cho công việc.</p>
-                                <p class="note">
-                                    Nguyễn Minh Quang <br>
-                                    Art Director Mato Creative
-                                </p>
-                                <?php elseif($lang == 'en'): ?>
-                                <p>Frequent interaction, open sharing of know-how and examples are close to reality to help you immediately apply for work.</p>
-                                <p class="note">
-                                    Nguyen Minh Quang <br>
-                                    Art Director Mato Creative
-                                </p>
-                                <?php  endif; ?>
+
+                            <div class="item">
+                                <div class="index-comment-item">
+                                    <div class="left">
+                                        <img src="<?php echo base_url('assets/public/img/student-1.jpg'); ?>">
+                                    </div>
+                                    <div class="right">
+                                        <?php if($lang == 'vi'): ?>
+                                        <p>Việc tương tác thường xuyên, chia sẻ cởi mở về bí quyết làm nghề và những ví dụ rất sát với thực tế giúp mình ứng dụng ngay cho công việc.</p>
+                                        <p class="note">
+                                            Nguyễn Minh Quang <br>
+                                            Art Director Mato Creative
+                                        </p>
+                                        <?php elseif($lang == 'en'): ?>
+                                        <p>Frequent interaction, open sharing of know-how and examples are close to reality to help you immediately apply for work.</p>
+                                        <p class="note">
+                                            Nguyen Minh Quang <br>
+                                            Art Director Mato Creative
+                                        </p>
+                                        <?php  endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
