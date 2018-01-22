@@ -26,7 +26,7 @@
 			<?php foreach($partners as $item): ?>
 				<div class="coach col-lg-4 col-md-4 col-sm-4 col-xs-6">
 					<img src="<?php echo base_url('assets/upload/partner/' . $item['description_image']); ?>">
-					<a href="<?php echo site_url('introduce/detail_partner/' . $item['partner_id']); ?>"><label> <?php echo $item['name']; ?></label></a>
+					<a href="<?php echo site_url('introduce/detail_partner/' . $item['slug']); ?>"><label> <?php echo $item['name']; ?></label></a>
 				</div>
 			<?php endforeach; ?>
 		</div>

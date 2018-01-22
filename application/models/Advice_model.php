@@ -79,21 +79,22 @@ class Advice_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('advice.*, GROUP_CONCAT(advice_lang.title ORDER BY advice_lang.language separator \'|||\') as advice_title, 
                             GROUP_CONCAT(advice_lang.slug ORDER BY advice_lang.language separator \'|||\') as advice_slug,
                             GROUP_CONCAT(advice_lang.meta_description ORDER BY advice_lang.language separator \'|||\') as advice_meta_description,
                             GROUP_CONCAT(advice_lang.meta_keywords ORDER BY advice_lang.language separator \'|||\') as advice_meta_keywords,
                             GROUP_CONCAT(advice_lang.description ORDER BY advice_lang.language separator \'|||\') as advice_description,
-                            GROUP_CONCAT(advice_lang.content ORDER BY advice_lang.language separator \'|||\') as advice_content');
+                            GROUP_CONCAT(advice_lang.content ORDER BY advice_lang.language separator \'|||\') as advice_content,
+                            GROUP_CONCAT(advice_lang.language ORDER BY advice_lang.language separator \'|||\') as advice_language');
         $this->db->from('advice');
         $this->db->join('advice_lang', 'advice_lang.advice_id = advice.id', 'left');
         if($lang != ''){
             $this->db->where('advice_lang.language', $lang);
         }
         $this->db->where('advice.is_deleted', 0);
-        $this->db->where('advice.id', $id);
+        $this->db->where('advice_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -138,11 +139,11 @@ class Advice_model extends CI_Model {
         return $this->db->update('advice', $set_delete);
     }
 
-    public function get_id($id) {
+    public function get_id($id, $language = 'vi') {
         $this->db->select('*');
         $this->db->from('advice_lang');
         $this->db->where('advice_id', $id);
-        $this->db->where('language', 'vi');
+        $this->db->where('language', $language);
         $this->db->order_by("id", "desc");
 
         return $result = $this->db->get()->row_array();
@@ -162,6 +163,14 @@ class Advice_model extends CI_Model {
             $temp_slug = $slug . '-' . (++$count);
         }
         return $temp_slug;
+    }
+    public function get_slug($slug) {
+        $this->db->select('*');
+        $this->db->from('advice_lang');
+        $this->db->where('slug', $slug);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }

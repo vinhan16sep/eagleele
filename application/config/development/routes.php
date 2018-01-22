@@ -57,5 +57,6 @@ $route['admin'] = 'admin/dashboard';
 $route['vi'] = 'homepage';
 $route['en'] = 'homepage';
 
+
 $route['^en/(.+)$'] = "$1";
 $route['^vi/(.+)$'] = "$1";

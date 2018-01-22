@@ -54,16 +54,16 @@
             $url_vi = base_url() . 'vi/' . 'introduce/teachers';
             break;
         case 'detail_teacher':
-            $url_en = base_url() . 'en/' . 'introduce/detail_teacher/' . $teacher_id;
-            $url_vi = base_url() . 'vi/' . 'introduce/detail_teacher/' . $teacher_id;
+            $url_en = base_url() . 'en/' . 'introduce/detail_teacher/' . $teacher_slug_en;
+            $url_vi = base_url() . 'vi/' . 'introduce/detail_teacher/' . $teacher_slug_vi;
             break;
         case 'partners':
             $url_en = base_url() . 'en/' . 'introduce/partners';
             $url_vi = base_url() . 'vi/' . 'introduce/partners';
             break;
         case 'detail_partner':
-            $url_en = base_url() . 'en/' . 'introduce/detail_partner/' . $partner_id;
-            $url_vi = base_url() . 'vi/' . 'introduce/detail_partner/' . $partner_id;
+            $url_en = base_url() . 'en/' . 'introduce/detail_partner/' . $partner_slug_en;
+            $url_vi = base_url() . 'vi/' . 'introduce/detail_partner/' . $partner_slug_vi;
             break;
             
         case 'list_project':
@@ -71,8 +71,8 @@
             $url_vi = base_url() . 'vi/' . 'project';
             break;
         case 'detail_project':
-            $url_en = base_url() . 'en/' . 'project/detail/' . $project_id;
-            $url_vi = base_url() . 'vi/' . 'project/detail/' . $project_id;
+            $url_en = base_url() . 'en/' . 'project/detail/' . $project_slug_en;
+            $url_vi = base_url() . 'vi/' . 'project/detail/' . $project_slug_vi;
             break;
         case 'training_seven_steps':
             $url_en = base_url() . 'en/' . 'training/training_seven_steps';
@@ -95,16 +95,16 @@
             $url_vi = base_url() . 'vi/' . 'advice';
             break;
         case 'detail_advice':
-            $url_en = base_url() . 'en/' . 'advice/detail/' . $advice_id;
-            $url_vi = base_url() . 'vi/' . 'advice/detail/' . $advice_id;
+            $url_en = base_url() . 'en/' . 'advice/detail/' . $advice_slug_en;
+            $url_vi = base_url() . 'vi/' . 'advice/detail/' . $advice_slug_vi;
             break;
         case 'list_article':
             $url_en = base_url() . 'en/' . 'article';
             $url_vi = base_url() . 'vi/' . 'article';
             break;
         case 'detail_article':
-            $url_en = base_url() . 'en/' . 'article/detail/' . $article_id;
-            $url_vi = base_url() . 'vi/' . 'article/detail/' . $article_id;
+            $url_en = base_url() . 'en/' . 'article/detail/' . $article_slug_en;
+            $url_vi = base_url() . 'vi/' . 'article/detail/' . $article_slug_vi;
             break;
         case 'list_news':
             $url_en = base_url() . 'en/' . 'article/news/' . $category_id;
@@ -115,16 +115,16 @@
             $url_vi = base_url() . 'vi/' . 'recruitment';
             break;
         case 'detail_recruitment':
-            $url_en = base_url() . 'en/' . 'recruitment/detail/' . $recruitment_id;
-            $url_vi = base_url() . 'vi/' . 'recruitment/detail/' . $recruitment_id;
+            $url_en = base_url() . 'en/' . 'recruitment/detail/' . $recruitment_slug_en;
+            $url_vi = base_url() . 'vi/' . 'recruitment/detail/' . $recruitment_slug_vi;
             break;
         case 'list_library':
             $url_en = base_url() . 'en/' . 'library';
             $url_vi = base_url() . 'vi/' . 'library';
             break;
         case 'detail_library':
-            $url_en = base_url() . 'en/' . 'library/detail/' . $library_id;
-            $url_vi = base_url() . 'vi/' . 'library/detail/' . $library_id;
+            $url_en = base_url() . 'en/' . 'library/detail/' . $library_slug_en;
+            $url_vi = base_url() . 'vi/' . 'library/detail/' . $library_slug_vi;
             break;
         case 'contact':
             $url_en = base_url() . 'en/' . 'contact';

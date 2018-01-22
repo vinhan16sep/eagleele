@@ -13,7 +13,7 @@
                 </a>
 
                 <p><?php echo $item['description']; ?></p>
-                <a class="btn btn-default btn-fill" href="<?php echo site_url('recruitment/detail/' . $item['recruitment_id']); ?>" role="button">
+                <a class="btn btn-default btn-fill" href="<?php echo site_url('recruitment/detail/' . $item['slug']); ?>" role="button">
                     <?php echo $this->lang->line('read_more') ?>
                 </a>
             </div>

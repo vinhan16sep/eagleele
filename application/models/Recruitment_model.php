@@ -69,21 +69,22 @@ class Recruitment_model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $lang = '') {
+    public function get_by_id($slug, $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('recruitment.*, GROUP_CONCAT(recruitment_lang.title ORDER BY recruitment_lang.language separator \'|||\') as recruitment_title, 
                             GROUP_CONCAT(recruitment_lang.slug ORDER BY recruitment_lang.language separator \'|||\') as recruitment_slug,
                             GROUP_CONCAT(recruitment_lang.meta_description ORDER BY recruitment_lang.language separator \'|||\') as recruitment_meta_description,
                             GROUP_CONCAT(recruitment_lang.meta_keywords ORDER BY recruitment_lang.language separator \'|||\') as recruitment_meta_keywords,
                             GROUP_CONCAT(recruitment_lang.description ORDER BY recruitment_lang.language separator \'|||\') as recruitment_description,
-                            GROUP_CONCAT(recruitment_lang.content ORDER BY recruitment_lang.language separator \'|||\') as recruitment_content');
+                            GROUP_CONCAT(recruitment_lang.content ORDER BY recruitment_lang.language separator \'|||\') as recruitment_content,
+                            GROUP_CONCAT(recruitment_lang.language ORDER BY recruitment_lang.language separator \'|||\') as recruitment_language');
         $this->db->from('recruitment');
         $this->db->join('recruitment_lang', 'recruitment_lang.recruitment_id = recruitment.id', 'left');
         if($lang != ''){
             $this->db->where('recruitment_lang.language', $lang);
         }
         $this->db->where('recruitment.is_deleted', 0);
-        $this->db->where('recruitment.id', $id);
+        $this->db->where('recruitment_lang.slug', $slug);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();
@@ -128,11 +129,11 @@ class Recruitment_model extends CI_Model {
         return $this->db->update('recruitment', $set_delete);
     }
 
-    public function get_id($id) {
+    public function get_id($id, $language = 'vi') {
         $this->db->select('*');
         $this->db->from('recruitment_lang');
         $this->db->where('recruitment_id', $id);
-        $this->db->where('language', 'vi');
+        $this->db->where('language', $language);
         $this->db->order_by("id", "desc");
 
         return $result = $this->db->get()->row_array();
@@ -152,6 +153,15 @@ class Recruitment_model extends CI_Model {
             $temp_slug = $slug . '-' . (++$count);
         }
         return $temp_slug;
+    }
+
+    public function get_slug($slug) {
+        $this->db->select('*');
+        $this->db->from('recruitment_lang');
+        $this->db->where('slug', $slug);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->row_array();
     }
 
 }

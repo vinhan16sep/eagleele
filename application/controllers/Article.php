@@ -27,14 +27,15 @@ class Article extends Public_Controller {
         $this->render('article_view');
     }
 
-    public function detail($id = null){
+    public function detail($slug = null){
         $this->load->model('comment_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
 
         $this->data['category_cmt'] = 'article';
 
-        $where = array('category' => 'article', 'detail_id' => $slug);
+        $detail_id = $this->article_model->get_slug($slug);
+        $where = array('category' => 'article', 'detail_id' => $detail_id['article_id']);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
@@ -44,11 +45,23 @@ class Article extends Public_Controller {
 
         $request_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $this->data['current_link'] = 'detail_article';
-        $this->data['article_id'] = $request_id;
 
-        $article = $this->article_model->get_by_id($request_id, $this->_lang);
+        $article = $this->article_model->get_by_id($slug, $this->_lang);
 
         $this->data['article'] = $article;
+
+        switch ($article['article_language']){
+            case 'vi':
+                $this->data['article_slug_vi'] = $slug;
+                $article_language = $this->article_model->get_id($article['id'], 'en');
+                $this->data['article_slug_en'] = $article_language['slug'];
+                break;
+            case 'en':
+                $this->data['article_slug_en'] = $slug;
+                $article_language = $this->article_model->get_id($article['id'], 'vi');
+                $this->data['article_slug_vi'] = $article_language['slug'];
+                break;
+        };
 
         // Get article's category
         if($article['category_id'] != null){

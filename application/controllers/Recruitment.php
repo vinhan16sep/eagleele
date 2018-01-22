@@ -29,8 +29,8 @@ class Recruitment extends Public_Controller {
         $this->load->library('form_validation');
 
         $this->data['category'] = 'recruitment';
-
-        $where = array('category' => 'recruitment', 'detail_id' => $slug);
+        $detail_id = $this->recruitment_model->get_slug($slug);
+        $where = array('category' => 'recruitment', 'detail_id' => $detail_id['recruitment_id']);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
@@ -38,9 +38,22 @@ class Recruitment extends Public_Controller {
         $this->data['total_comment'] = $this->comment_model->count_all($where);
 
         $this->data['current_link'] = 'detail_recruitment';
-        $this->data['recruitment_id'] = $slug;
         $this->data['latest_recruitment'] = $this->recruitment_model->get_latest_article($this->data['lang']);
-        $this->data['recruitment'] = $this->recruitment_model->get_by_id($slug, $this->data['lang']);
+        $recruitment = $this->recruitment_model->get_by_id($slug, $this->data['lang']);
+        $this->data['recruitment'] = $recruitment;
+
+        switch ($recruitment['recruitment_language']){
+            case 'vi':
+                $this->data['recruitment_slug_vi'] = $slug;
+                $recruitment_language = $this->recruitment_model->get_id($recruitment['id'], 'en');
+                $this->data['recruitment_slug_en'] = $recruitment_language['slug'];
+                break;
+            case 'en':
+                $this->data['recruitment_slug_en'] = $slug;
+                $recruitment_language = $this->recruitment_model->get_id($recruitment['id'], 'vi');
+                $this->data['recruitment_slug_vi'] = $recruitment_language['slug'];
+                break;
+        };
 
         if (!$this->data['recruitment']) {
             redirect('', 'refresh');
