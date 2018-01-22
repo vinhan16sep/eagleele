@@ -24,6 +24,19 @@ class Advice extends Public_Controller {
     }
 
     public function detail($slug = null){
+        $this->load->model('comment_model');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->data['category'] = $this->uri->segment(1);
+
+        $where = array('category' => $this->uri->segment(1), 'detail_id' => $this->uri->segment(3));
+        $comment = $this->comment_model->fetch_all($where, 5, 0);
+        if($comment){
+            $this->data['comment'] = $comment;
+        }
+        $this->data['total_comment'] = $this->comment_model->count_all($where);
+
         $this->data['current_link'] = 'detail_advice';
         $this->data['advice_id'] = $slug;
         $this->data['latest_advice'] = $this->advice_model->get_latest_article($this->data['lang']);

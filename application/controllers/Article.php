@@ -28,6 +28,20 @@ class Article extends Public_Controller {
     }
 
     public function detail($id = null){
+        $this->load->model('comment_model');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->data['category_cmt'] = $this->uri->segment(1);
+
+        $where = array('category' => $this->uri->segment(1), 'detail_id' => $this->uri->segment(3));
+        $comment = $this->comment_model->fetch_all($where, 5, 0);
+        if($comment){
+            $this->data['comment'] = $comment;
+        }
+        $this->data['total_comment'] = $this->comment_model->count_all($where);
+
+
         $request_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         $this->data['current_link'] = 'detail_article';
         $this->data['article_id'] = $request_id;
