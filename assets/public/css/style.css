@@ -236,8 +236,9 @@ nav ul li{
 	font-size: 1.5em;
 }
 
-.index-course table tr:first-of-type{
-	border-top: none;
+.index-course img{
+	height: 160px;
+	overflow: hidden;
 }
 
 .index-video iframe{

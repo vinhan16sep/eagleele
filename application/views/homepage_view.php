@@ -39,32 +39,14 @@
                 <h2><?php echo $this->lang->line('index_event'); ?></h2>
                 <div class="title-underline"></div>
             </div>
-            <table class="table table-hover">
-                <?php if($events): ?>
-                <?php foreach($events as $item): ?>
-                <tr>
-                    <td>
-                        <h4 class="headline"><?php echo $item['title']; ?></h4>
-                        <!--<h4 class="headline"><?php echo date("d-m-Y H:i", strtotime($item['event_time'])); ?></h4>-->
-                        <!--<h4 class="headline"><?php echo $item['event_location']; ?></h4>-->
-                        <!--<h4 class="headline"><?php echo $item['event_address']; ?></h4>-->
-                        <!--<h4 class="headline"><?php echo $item['event_cost']; ?></h4>-->
-                        <p><?php echo $item['description'] ?></p>
-                    </td>
-                    <td>
-                        <!--<a class="btn btn-default btn-fill" href="#" role="button" data-toggle="modal" data-target="#dangkykhoahoc">
-                            <?php echo $this->lang->line('index_register'); ?>
-                        </a>-->
-                    </td>
-                    <td>
-                        <a class="btn btn-default" href="<?php echo site_url('article/detail/' . $item['article_id']); ?>" role="button">
-                            <?php echo $this->lang->line('index_read_detail'); ?>
-                        </a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+            <?php for($i = 0; $i < 3; $i++) { ?>
+                <?php if(isset($events[$i])): ?>
+                    <div class="index-coach-left-item col-md-4 col-sm-12 col-xs-12">
+                        <img src="<?php echo base_url('assets/upload/article/' . $events[$i]['description_image']); ?>">
+                        <a href="<?php echo site_url('article/detail/' . $events[$i]['article_id']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
+                    </div>
                 <?php endif; ?>
-            </table>
+            <?php } ?>
 
             <!--<div class="visible-xs">
                 <div class="course-xs col-xs-12">
@@ -110,14 +92,11 @@
 
             </div>
             <?php endif; ?>
-            <div class="index-banner">
-                <!--
-                    Allow to put a banner, image to advitise a course or smth else on homepage, change link of image src and a link of embed page.
-                -->
-                <a href="javascript:void(0);">
-                    <img src="<?php echo base_url('assets/public/img/banner/index_banner.jpg') ?>">
-                </a>
-            </div>
+<!--            <div class="index-banner">-->
+<!--                <a href="javascript:void(0);">-->
+<!--                    <img src="--><?php //echo base_url('assets/public/img/banner/index_banner.jpg') ?><!--">-->
+<!--                </a>-->
+<!--            </div>-->
         </div>
         <div class="index-coach col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="content-title">

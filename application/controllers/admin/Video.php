@@ -22,8 +22,6 @@ class Video extends Admin_Controller {
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['videos'] = $this->video_model->fetch_all_pagination($config['per_page'], $page);
-//        echo '<pre>';
-//        print_r($this->data['videos']);die;
 
 
         $this->render('admin/video/list_video_view');
