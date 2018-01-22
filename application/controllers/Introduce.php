@@ -15,6 +15,9 @@ class Introduce extends Public_Controller {
 	public function index(){
         $this->data['current_link'] = 'introduce';
 
+        $this->load->model('partner_model');
+        $this->data['partners'] = $this->partner_model->get_all_by_language($this->data['lang']);
+
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Giới thiệu về chúng tôi' : 'About us';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Giới thiệu về chúng tôi' : 'About us';
         $this->data['meta_keywords'] = ($this->data['lang'] == 'vi') ? 'Giới thiệu về chúng tôi' : 'About us';

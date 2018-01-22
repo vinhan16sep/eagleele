@@ -236,6 +236,15 @@ nav ul li{
 	font-size: 1.5em;
 }
 
+#index-about{
+	padding: 15px;
+	background: #fff;
+	box-shadow: 2px 2px 15px #e4e4e4;
+	-webkit-box-shadow: 2px 2px 15px #e4e4e4;
+	-moz-box-shadow: 2px 2px 15px #e4e4e4;
+	-o-box-shadow: 2px 2px 15px #e4e4e4;
+}
+
 .index-course img{
 	height: 160px;
 	overflow: hidden;

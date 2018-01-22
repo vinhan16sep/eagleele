@@ -11,6 +11,7 @@ class Homepage extends Public_Controller {
         $this->load->library('session');
         $this->load->model('intro_model');
         $this->load->model('video_model');
+        $this->load->model('library_model');
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
         $this->data['show_intro_popup'] = true;
         $this->data['popup_content'] = $this->intro_model->get_by_id(1, $this->data['lang']);
@@ -22,6 +23,7 @@ class Homepage extends Public_Controller {
         list($this->data['events'], $this->data['news']) = $this->list_latest_articles();
         $this->data['banners'] = $this->list_banners();
         $this->data['teachers'] = $this->list_teachers();
+        $this->data['libraries'] = $this->list_libraries();
 
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
@@ -114,6 +116,10 @@ class Homepage extends Public_Controller {
     public function list_teachers(){
         $this->load->model('teacher_model');
         return $teachers = $this->teacher_model->get_all_by_language($this->data['lang']);
+    }
+
+    public function list_libraries(){
+        return $libraries = $this->library_model->get_last_five_by_language($this->data['lang']);
     }
     
 }
