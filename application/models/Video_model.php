@@ -35,18 +35,13 @@ class Video_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function fetch_all_by_type($type){
-        $query = $this->db->select('*')
-            ->from('video')
-            ->where('type', $type)
-            ->where('is_deleted', 0)
-            ->get();
+    public function get_all_by_language($lang){
+        $this->db->select('*');
+        $this->db->from('video');
+        $this->db->where('video.is_deleted', 0);
+        $this->db->order_by("video.id", "desc");
 
-        if($query->num_rows() > 0){
-            return $query->result_array();
-        }
-
-        return false;
+        return $result = $this->db->get()->result_array();
     }
 
     public function fetch_latest_videos($quantity){

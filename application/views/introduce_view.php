@@ -4,7 +4,7 @@
 <section class="main-content container">
 	<div class="row">
 		<div class="navside col-lg-3 col-md-3 col-sm-3 col-xs-12">
-			<div class="content-title">
+			<div class="content-title" style="margin-bottom:0px !important">
 				<h2>Giới thiệu</h2>
 				<div class="title-underline"></div>
 			</div>
