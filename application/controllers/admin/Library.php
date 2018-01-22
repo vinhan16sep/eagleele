@@ -54,6 +54,12 @@ class Library extends Admin_Controller {
             $this->render('admin/library/create_library_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->library_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->library_model->build_unique_slug($slug_en);
+
 //                echo '<pre>';
 //                print_r($this->input->post());die;
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/library', 'assets/upload/library/thumb');
@@ -73,7 +79,7 @@ class Library extends Admin_Controller {
                         'library_id' => $insert_id,
                         'language' => 'vi',
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -83,7 +89,7 @@ class Library extends Admin_Controller {
                         'library_id' => $insert_id,
                         'language' => 'en',
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),
@@ -151,6 +157,12 @@ class Library extends Admin_Controller {
             $this->render('admin/library/edit_library_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->library_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->library_model->build_unique_slug($slug_en);
+
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/library', 'assets/upload/library/thumb');
                 $data = array(
                     'type' => $this->input->post('type'),
@@ -167,7 +179,7 @@ class Library extends Admin_Controller {
                     $this->library_model->update($input_id, $data);
                     $data_vi = array(
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -177,7 +189,7 @@ class Library extends Admin_Controller {
 
                     $data_en = array(
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),

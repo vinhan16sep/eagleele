@@ -51,6 +51,12 @@ class Advice extends Admin_Controller {
             $this->render('admin/advice/create_advice_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->advice_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->advice_model->build_unique_slug($slug_en);
+
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/advice', 'assets/upload/advice/thumb');
                 $data = array(
                     'description_image' => $image,
@@ -66,7 +72,7 @@ class Advice extends Admin_Controller {
                         'advice_id' => $insert_id,
                         'language' => 'vi',
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -76,7 +82,7 @@ class Advice extends Admin_Controller {
                         'advice_id' => $insert_id,
                         'language' => 'en',
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),
@@ -146,6 +152,12 @@ class Advice extends Admin_Controller {
             $this->render('admin/advice/edit_advice_view');
         } else {
             if ($this->input->post()) {
+                $slug_vi = $this->input->post('slug_vi');
+                $unique_slug_vi = $this->advice_model->build_unique_slug($slug_vi);
+
+                $slug_en = $this->input->post('slug_en');
+                $unique_slug_en = $this->advice_model->build_unique_slug($slug_en);
+
                 $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/advice', 'assets/upload/advice/thumbs');
                 $data = array(
                     'description_image' => $image,
@@ -161,7 +173,7 @@ class Advice extends Admin_Controller {
                     $this->advice_model->update($input_id, $data);
                     $data_vi = array(
                         'title' => $this->input->post('title_vi'),
-                        'slug' => $this->input->post('slug_vi'),
+                        'slug' => $unique_slug_vi,
                         'meta_description' => $this->input->post('meta_description_vi'),
                         'meta_keywords' => $this->input->post('meta_keywords_vi'),
                         'description' => $this->input->post('description_vi'),
@@ -171,7 +183,7 @@ class Advice extends Admin_Controller {
 
                     $data_en = array(
                         'title' => $this->input->post('title_en'),
-                        'slug' => $this->input->post('slug_en'),
+                        'slug' => $unique_slug_en,
                         'meta_description' => $this->input->post('meta_description_en'),
                         'meta_keywords' => $this->input->post('meta_keywords_en'),
                         'description' => $this->input->post('description_en'),

@@ -168,4 +168,20 @@ class Article_model extends CI_Model {
         return $result = $this->db->get()->row_array();
     }
 
+    public function build_unique_slug($slug, $id = null){
+        $count = 0;
+        $temp_slug = $slug;
+        while(true) {
+            $this->db->select('id');
+            $this->db->where('slug', $temp_slug);
+            if($id != null){
+                $this->db->where('id !=', $id);
+            }
+            $query = $this->db->get('article_lang');
+            if ($query->num_rows() == 0) break;
+            $temp_slug = $slug . '-' . (++$count);
+        }
+        return $temp_slug;
+    }
+
 }
