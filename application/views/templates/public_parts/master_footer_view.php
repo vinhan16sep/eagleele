@@ -28,7 +28,7 @@
                         <td><img src="<?php echo base_url('assets/public/img/logo-w.png'); ?>"></td>
                         <td>
                             <ul>
-                                <li><a href="#"><i class="fa fa-2x fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com/EAGLEELE/" target="_blank"><i class="fa fa-2x fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a></li>
                                 <li><a href="#"><i class="fa fa-2x fa-youtube-square"></i></a></li>
                             </ul>

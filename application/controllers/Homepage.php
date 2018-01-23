@@ -13,6 +13,7 @@ class Homepage extends Public_Controller {
         $this->load->model('video_model');
         $this->load->model('library_model');
         $this->load->model('background_model');
+        $this->load->model('testimonial_model');
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
         $this->data['show_intro_popup'] = true;
         $this->data['popup_content'] = $this->intro_model->get_by_id(1, $this->data['lang']);
@@ -28,6 +29,8 @@ class Homepage extends Public_Controller {
 
         $background = $this->background_model->get_for_homepage();
         $this->data['background'] = $background[0]['image'];
+
+        $this->data['testimonials'] = $this->testimonial_model->get_all_with_pagination(3, 0);
 
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';

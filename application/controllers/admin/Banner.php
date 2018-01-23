@@ -79,24 +79,31 @@ class Banner extends Admin_Controller {
     }
 
     public function delete($id = NULL) {
-        $result = $this->banner_model->get_by_id($id);
+        $input = $this->input->get();
+        $result = $this->banner_model->get_by_id($input['id']);
+
         if (!$result) {
-            redirect('admin/banner', 'refresh');
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
         }
 
         try {
-            $this->banner_model->remove($id);
+            $remove = $this->banner_model->remove($input['id']);
 
-            $image = explode('.', $result['image']);
-            $thumbnail = $image[0] . '_thumb.' . $image[1];
-            unlink('assets/upload/banner/' . $result['image']);
-            unlink('assets/upload/banner/thumb/' . $thumbnail);
+            if($remove){
+                $image = explode('.', $result['image']);
+                $thumbnail = $image[0] . '_thumb.' . $image[1];
+                unlink('assets/upload/banner/' . $result['image']);
+                unlink('assets/upload/banner/thumb/' . $thumbnail);
 
-            $this->session->set_flashdata('message', 'Item has deleted successful.');
+                $this->output->set_status_header(200)
+                    ->set_output(json_encode(array('message' => 'Success', 'data' => $input)));
+            }
+
         } catch (Exception $e) {
-            $this->session->set_flashdata('message', 'Have error while delete item: ' . $e->getMessage());
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
         }
-        redirect('admin/banner', 'refresh');
     }
 
 }
