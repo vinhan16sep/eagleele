@@ -101,7 +101,7 @@ class Homepage extends Public_Controller {
     public function list_latest_articles(){
         $this->load->model('article_model');
         $events = $this->article_model->fetch_latest_article_by_type(0, 5, $this->data['lang']);
-        $news = $this->article_model->fetch_latest_article_by_type(1, 5, $this->data['lang']);
+        $news = $this->article_model->fetch_latest_article_by_type(1, 3, $this->data['lang']);
 
         return array($events, $news);
     }
@@ -119,7 +119,7 @@ class Homepage extends Public_Controller {
     }
 
     public function list_libraries(){
-        return $libraries = $this->library_model->get_last_five_by_language($this->data['lang']);
+        return $libraries = $this->library_model->get_last_three_by_language($this->data['lang']);
     }
     
 }

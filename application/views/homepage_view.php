@@ -208,104 +208,91 @@
         </div>
 
         <div class="row">
-            <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="index-news container-fluid">
                 <div class="shadow">
                     <div class="content-title">
                         <h2><?php echo $this->lang->line('library'); ?></h2>
                         <div class="title-underline"></div>
                     </div>
-                    <ul>
+
+                    <div class="row">
                         <?php if($libraries): ?>
                             <?php foreach($libraries as $item): ?>
-                                <li>
-                                    <a href="<?php echo site_url('article/detail/' . $item['library_id']); ?>"><?php echo $item['title']; ?></a>
-                                </li>
+                            <div class="item col-md-4 col-sm-12 col-xs-12">
+                                <div class="mask">
+                                    <img src="<?php echo base_url('assets/upload/library/' . $item['description_image']) ?>" alt="img">
+                                </div>
+                                <a href="<?php echo site_url('library/detail/' . $item['slug']); ?>">
+                                    <h3><?php echo $item['title']; ?></h3>
+                                </a>
+
+                                <p><?php echo $item['description']; ?></p>
+                            </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                    </ul>
+                    </div>
+
                 </div>
             </div>
-            <div class="index-news col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        </div>
+
+        <div class="row">
+            <div class="index-news container-fluid">
                 <div class="shadow">
                     <div class="content-title">
                         <h2><?php echo $this->lang->line('index_news'); ?></h2>
                         <div class="title-underline"></div>
                     </div>
-                    <ul>
+
+                    <div class="row">
                         <?php if($news): ?>
-                        <?php foreach($news as $item): ?>
-                            <li>
-                                <a href="<?php echo site_url('article/detail/' . $item['article_id']); ?>"><?php echo $item['title']; ?></a>
-                            </li>
-                        <?php endforeach; ?>
+                            <?php foreach($news as $item): ?>
+                                <div class="item col-md-4 col-sm-12 col-xs-12">
+                                    <div class="mask">
+                                        <img src="<?php echo base_url('assets/upload/article/' . $item['description_image']) ?>" alt="img">
+                                    </div>
+                                    <a href="<?php echo site_url('article/detail/' . $item['slug']); ?>">
+                                        <h3><?php echo $item['title']; ?></h3>
+                                    </a>
+
+                                    <p><?php echo $item['description']; ?></p>
+                                </div>
+                            <?php endforeach; ?>
                         <?php endif; ?>
-                    </ul>
+                    </div>
+
                 </div>
             </div>
+        </div>
 
-            <div class="index-comment col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="row">
+            <div class="index-comment container-fluid">
                 <div class="shadow">
                     <div class="content-title">
                         <h2><?php echo $this->lang->line('index_student_thinking'); ?></h2>
                         <div class="title-underline"></div>
                     </div>
-                    <div id="index-comment" class="carousel slide slide-comment" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#index-comment" data-slide-to="0" class="active"></li>
-                            <li data-target="#index-comment" data-slide-to="1"></li>
-                        </ol>
 
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <div class="index-comment-item">
-                                    <div class="left">
-                                        <img src="<?php echo base_url('assets/public/img/student-2.jpg'); ?>">
-                                    </div>
-                                    <div class="right">
-                                        <?php if($lang == 'vi'): ?>
-                                        <p>Tôi nhận được những giá trị vượt xa so với học phí, học xong giúp ích ngay cho công việc của tôi.</p>
-                                        <p class="note">
-                                            Ngọc Anh <br>
-                                            Trưởng phòng Thiết kế Mato
-                                        </p>
-                                        <?php elseif($lang == 'en'): ?>
-                                        <p>I get the value far beyond the tuition fee, learning to help immediately for my work.</p>
-                                        <p class="note">
-                                            Ngoc Anh <br>
-                                            Head of Design Department Mato
-                                        </p>
-                                        <?php  endif; ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="item col-md-4 col-sm-12 col-xs-12">
+                            <img src="<?php echo base_url('assets/public/img/student-2.jpg'); ?>">
 
-                            <div class="item">
-                                <div class="index-comment-item">
-                                    <div class="left">
-                                        <img src="<?php echo base_url('assets/public/img/student-1.jpg'); ?>">
-                                    </div>
-                                    <div class="right">
-                                        <?php if($lang == 'vi'): ?>
-                                        <p>Việc tương tác thường xuyên, chia sẻ cởi mở về bí quyết làm nghề và những ví dụ rất sát với thực tế giúp mình ứng dụng ngay cho công việc.</p>
-                                        <p class="note">
-                                            Nguyễn Minh Quang <br>
-                                            Art Director Mato Creative
-                                        </p>
-                                        <?php elseif($lang == 'en'): ?>
-                                        <p>Frequent interaction, open sharing of know-how and examples are close to reality to help you immediately apply for work.</p>
-                                        <p class="note">
-                                            Nguyen Minh Quang <br>
-                                            Art Director Mato Creative
-                                        </p>
-                                        <?php  endif; ?>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php if($lang == 'vi'): ?>
+                                <p>Tôi nhận được những giá trị vượt xa so với học phí, học xong giúp ích ngay cho công việc của tôi.</p>
+                                <p class="note">
+                                    Ngọc Anh <br>
+                                    Trưởng phòng Thiết kế Mato
+                                </p>
+                            <?php elseif($lang == 'en'): ?>
+                                <p>I get the value far beyond the tuition fee, learning to help immediately for my work.</p>
+                                <p class="note">
+                                    Ngoc Anh <br>
+                                    Head of Design Department Mato
+                                </p>
+                            <?php  endif; ?>
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </div>
