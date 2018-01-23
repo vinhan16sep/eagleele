@@ -9,25 +9,35 @@ class Teacher_model extends CI_Model {
     }
 
     public function get_all_with_pagination($limit = NULL, $start = NULL) {
-        $this->db->select('teacher.*, tl.*');
+        $this->db->select('*');
         $this->db->from('teacher');
-        $this->db->join('teacher_lang tl', 'tl.teacher_id = teacher.id');
-        $this->db->where('teacher.is_deleted', 0);
+        $this->db->where('is_deleted', 0);
         $this->db->limit($limit, $start);
-        $this->db->order_by("teacher.id", "desc");
+        $this->db->order_by("id", "desc");
 
-        $result = $this->db->get()->result_array();
-
-        $converted_data = array();
-
-        for($i = 0; $i < count($result); $i++){
-            if(($i % 2) == 0){
-                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
-            }
-        }
-
-        return $converted_data;
+        return $result = $this->db->get()->result_array();
     }
+
+//    public function get_all_with_pagination($limit = NULL, $start = NULL) {
+//        $this->db->select('teacher.*, tl.*');
+//        $this->db->from('teacher');
+//        $this->db->join('teacher_lang tl', 'tl.teacher_id = teacher.id');
+//        $this->db->where('teacher.is_deleted', 0);
+//        $this->db->limit($limit, $start);
+//        $this->db->order_by("teacher.id", "desc");
+//
+//        $result = $this->db->get()->result_array();
+//
+//        $converted_data = array();
+//
+//        for($i = 0; $i < count($result); $i++){
+//            if(($i % 2) == 0){
+//                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
+//            }
+//        }
+//
+//        return $converted_data;
+//    }
 
     public function get_all_by_language($lang){
         $this->db->select('*');
@@ -85,6 +95,26 @@ class Teacher_model extends CI_Model {
         }
         $this->db->where('teacher.is_deleted', 0);
         $this->db->where('teacher_lang.slug', $slug);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('teacher.*, GROUP_CONCAT(teacher_lang.name ORDER BY teacher_lang.language separator \'|||\') as teacher_name, 
+                            GROUP_CONCAT(teacher_lang.slug ORDER BY teacher_lang.language separator \'|||\') as teacher_slug,
+                            GROUP_CONCAT(teacher_lang.meta_description ORDER BY teacher_lang.language separator \'|||\') as teacher_meta_description,
+                            GROUP_CONCAT(teacher_lang.meta_keywords ORDER BY teacher_lang.language separator \'|||\') as teacher_meta_keywords,
+                            GROUP_CONCAT(teacher_lang.position ORDER BY teacher_lang.language separator \'|||\') as teacher_position,
+                            GROUP_CONCAT(teacher_lang.bio ORDER BY teacher_lang.language separator \'|||\') as teacher_bio');
+        $this->db->from('teacher');
+        $this->db->join('teacher_lang', 'teacher_lang.teacher_id = teacher.id', 'left');
+        if($lang != ''){
+            $this->db->where('teacher_lang.language', $lang);
+        }
+        $this->db->where('teacher.is_deleted', 0);
+        $this->db->where('teacher.id', $id);
         $this->db->limit(1);
 
         return $this->db->get()->row_array();

@@ -19,9 +19,9 @@
             if (!empty($partners)) {
                 foreach ($partners as $item):
                     echo '<tr>';
-                    echo '<td>' . $item['name'][0] . '|' . $item['name'][1] . '</td>';
-                    echo '<td>' . anchor('admin/partner/edit/' . $item['partner_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
-                    echo ' ' . anchor('admin/partner/delete/' . $item['partner_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<td>' . str_replace('|||', ' | ', $item['data']['partner_name']) . '</td>';
+                    echo '<td>' . anchor('admin/partner/edit/' . $item['id'], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo ' ' . anchor('admin/partner/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;
             }else {

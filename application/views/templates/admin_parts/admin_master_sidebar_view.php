@@ -6,12 +6,11 @@ if($this->ion_auth->logged_in()) {
     <div id="sidebar"  class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-<!--            <li class="sub-menu">-->
-<!--                <a href="javascript:void(0);" class="">-->
-<!--                    <i class="icon_document_alt"></i>-->
-<!--                    <span>Giới thiệu</span>-->
-<!--                </a>-->
-<!--            </li>-->
+            <li class="sub-menu">
+                <a href="<?php echo site_url('admin/background'); ?>" class="">
+                    <span>Background</span>
+                </a>
+            </li>
             <li class="sub-menu">
                 <a href="<?php echo site_url('admin/banner'); ?>" class="">
                     <span>Banner</span>

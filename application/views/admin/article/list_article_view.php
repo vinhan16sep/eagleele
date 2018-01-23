@@ -20,13 +20,13 @@
             if (!empty($articles)) {
                 foreach ($articles as $item):
                     echo '<tr>';
-                    echo '<td>' . $item['title'][0] . '|' . $item['title'][1] . '</td>';
+                    echo '<td>' . str_replace('|||', ' | ', $item['data']['article_title']) . '</td>';
                     ?>
-                    <td><span><?php echo ($item['type'][0] == 0) ? 'Event' : 'News' ?></span></td>
+                    <td><span><?php echo ($item['data']['type'][0] == 0) ? 'Event' : 'News' ?></span></td>
                     <?php
-                    echo '<td>' . anchor('admin/comment/index/article/' . $item['article_id'][0], '<span class="glyphicon glyphicon-comment"></span>');
-                    echo ' '.anchor('admin/article/edit/' . $item['article_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
-                    echo ' ' . anchor('admin/article/delete/' . $item['article_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<td>' . anchor('admin/comment/index/article/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');
+                    echo ' '.anchor('admin/article/edit/' . $item['id'], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo ' ' . anchor('admin/article/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;
             }else {
