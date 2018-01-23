@@ -6,15 +6,18 @@
     </div>
     <div class="news-post">
         <div class="row">
-            <div class="left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="left col-md-8 col-sm-8 col-xs-8">
                 <div class="content-title">
                     <h2>Thư viện</h2>
                 </div>
 
-                <h1><?php echo $library['library_title']; ?></h1>
-                <?php echo $library['library_content']; ?>
+                <article>
+                    <h1><?php echo $library['library_title']; ?></h1>
+                    <?php echo $library['library_content']; ?>
+                </article>
+
             </div>
-            <div class="right col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="right col-md-4 col-sm-4 col-xs-4">
                 <div class="content-title">
                     <h2>Đăng ký nhận sách</h2>
                 </div>

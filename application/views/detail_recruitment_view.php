@@ -11,11 +11,13 @@
 					<h2><?php echo $this->lang->line('recruitment') ?></h2>
 					<div class="title-underline"></div>
 				</div>
-				
-				<h1><?php echo $recruitment['recruitment_title']; ?></h1>
-				
-				<?php echo $recruitment['recruitment_content']; ?>
-				
+
+                <article>
+                    <h1><?php echo $recruitment['recruitment_title']; ?></h1>
+
+                    <?php echo $recruitment['recruitment_content']; ?>
+                </article>
+
 			</div>
 			<div class="right col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="content-title">
