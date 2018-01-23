@@ -12,6 +12,7 @@ class Homepage extends Public_Controller {
         $this->load->model('intro_model');
         $this->load->model('video_model');
         $this->load->model('library_model');
+        $this->load->model('background_model');
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
         $this->data['show_intro_popup'] = true;
         $this->data['popup_content'] = $this->intro_model->get_by_id(1, $this->data['lang']);
@@ -24,6 +25,9 @@ class Homepage extends Public_Controller {
         $this->data['banners'] = $this->list_banners();
         $this->data['teachers'] = $this->list_teachers();
         $this->data['libraries'] = $this->list_libraries();
+
+        $background = $this->background_model->get_for_homepage();
+        $this->data['background'] = $background[0]['image'];
 
         $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Eagle Ele' : 'Eagle Ele';

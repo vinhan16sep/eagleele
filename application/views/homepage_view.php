@@ -35,7 +35,7 @@
     </div>
 </section>
 
-<section class="container-fluid">
+<section class="container-fluid" style="background-image: url(<?php echo base_url('assets/upload/background/' . $background) ?>)">
     <div class="main-content container">
         <div class="" id="index-about">
             <div class="shadow">
