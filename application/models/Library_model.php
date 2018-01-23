@@ -103,6 +103,27 @@ class Library_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('library.*, GROUP_CONCAT(library_lang.title ORDER BY library_lang.language separator \'|||\') as library_title, 
+                            GROUP_CONCAT(library_lang.slug ORDER BY library_lang.language separator \'|||\') as library_slug,
+                            GROUP_CONCAT(library_lang.meta_description ORDER BY library_lang.language separator \'|||\') as library_meta_description,
+                            GROUP_CONCAT(library_lang.meta_keywords ORDER BY library_lang.language separator \'|||\') as library_meta_keywords,
+                            GROUP_CONCAT(library_lang.description ORDER BY library_lang.language separator \'|||\') as library_description,
+                            GROUP_CONCAT(library_lang.content ORDER BY library_lang.language separator \'|||\') as library_content,
+                            GROUP_CONCAT(library_lang.language ORDER BY library_lang.language separator \'|||\') as library_language');
+        $this->db->from('library');
+        $this->db->join('library_lang', 'library_lang.library_id = library.id', 'left');
+        if($lang != ''){
+            $this->db->where('library_lang.language', $lang);
+        }
+        $this->db->where('library.is_deleted', 0);
+        $this->db->where('library.id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function get_news_in_category_by_language($category_id, $lang = '') {
         $this->db->select('*');
         $this->db->from('library');

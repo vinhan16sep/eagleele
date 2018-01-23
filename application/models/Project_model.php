@@ -100,6 +100,26 @@ class project_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('project.*, GROUP_CONCAT(project_lang.title ORDER BY project_lang.language separator \'|||\') as project_title, 
+                            GROUP_CONCAT(project_lang.slug ORDER BY project_lang.language separator \'|||\') as project_slug,
+                            GROUP_CONCAT(project_lang.meta_description ORDER BY project_lang.language separator \'|||\') as project_meta_description,
+                            GROUP_CONCAT(project_lang.meta_keywords ORDER BY project_lang.language separator \'|||\') as project_meta_keywords,
+                            GROUP_CONCAT(project_lang.description ORDER BY project_lang.language separator \'|||\') as project_description,
+                            GROUP_CONCAT(project_lang.content ORDER BY project_lang.language separator \'|||\') as project_content');
+        $this->db->from('project');
+        $this->db->join('project_lang', 'project_lang.project_id = project.id', 'left');
+        if($lang != ''){
+            $this->db->where('project_lang.language', $lang);
+        }
+        $this->db->where('project.is_deleted', 0);
+        $this->db->where('project.id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function insert($data) {
         $this->db->set($data)->insert('project');
 

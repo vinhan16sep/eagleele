@@ -100,6 +100,26 @@ class Advice_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('advice.*, GROUP_CONCAT(advice_lang.title ORDER BY advice_lang.language separator \'|||\') as advice_title, 
+                            GROUP_CONCAT(advice_lang.slug ORDER BY advice_lang.language separator \'|||\') as advice_slug,
+                            GROUP_CONCAT(advice_lang.meta_description ORDER BY advice_lang.language separator \'|||\') as advice_meta_description,
+                            GROUP_CONCAT(advice_lang.meta_keywords ORDER BY advice_lang.language separator \'|||\') as advice_meta_keywords,
+                            GROUP_CONCAT(advice_lang.description ORDER BY advice_lang.language separator \'|||\') as advice_description,
+                            GROUP_CONCAT(advice_lang.content ORDER BY advice_lang.language separator \'|||\') as advice_content');
+        $this->db->from('advice');
+        $this->db->join('advice_lang', 'advice_lang.advice_id = advice.id', 'left');
+        if($lang != ''){
+            $this->db->where('advice_lang.language', $lang);
+        }
+        $this->db->where('advice.is_deleted', 0);
+        $this->db->where('advice.id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function insert($data) {
         $this->db->set($data)->insert('advice');
 

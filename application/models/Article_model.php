@@ -94,6 +94,30 @@ class Article_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('article.*, GROUP_CONCAT(article_lang.title ORDER BY article_lang.language separator \'|||\') as article_title, 
+                            GROUP_CONCAT(article_lang.slug ORDER BY article_lang.language separator \'|||\') as article_slug,
+                            GROUP_CONCAT(article_lang.meta_description ORDER BY article_lang.language separator \'|||\') as article_meta_description,
+                            GROUP_CONCAT(article_lang.meta_keywords ORDER BY article_lang.language separator \'|||\') as article_meta_keywords,
+                            GROUP_CONCAT(article_lang.description ORDER BY article_lang.language separator \'|||\') as article_description,
+                            GROUP_CONCAT(article_lang.content ORDER BY article_lang.language separator \'|||\') as article_content,
+                            GROUP_CONCAT(article_lang.event_cost ORDER BY article_lang.language separator \'|||\') as article_cost,
+                            GROUP_CONCAT(article_lang.event_time ORDER BY article_lang.language separator \'|||\') as article_time,
+                            GROUP_CONCAT(article_lang.event_location ORDER BY article_lang.language separator \'|||\') as article_location,
+                            GROUP_CONCAT(article_lang.event_address ORDER BY article_lang.language separator \'|||\') as article_address');
+        $this->db->from('article');
+        $this->db->join('article_lang', 'article_lang.article_id = article.id', 'left');
+        if($lang != ''){
+            $this->db->where('article_lang.language', $lang);
+        }
+        $this->db->where('article.is_deleted', 0);
+        $this->db->where('article.id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function fetch_latest_article_by_type($type, $limit, $lang = '') {
         $this->db->select('*');
         $this->db->from('article');

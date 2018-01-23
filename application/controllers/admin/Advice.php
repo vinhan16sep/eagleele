@@ -31,7 +31,7 @@ class Advice extends Admin_Controller {
         $output = array();
         foreach($result as $key => $value){
             $output[$key]['id'] = $value['id'];
-            $output[$key]['data'] = $this->advice_model->get_by_id($value['id']);
+            $output[$key]['data'] = $this->advice_model->get_by_id_admin($value['id']);
         }
         $this->data['advices'] = $output;
 
@@ -111,7 +111,7 @@ class Advice extends Admin_Controller {
         $this->form_validation->set_rules('description_en', 'Description', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->advice_model->get_by_id($input_id);
+        $result = $this->advice_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/advice', 'refresh');
@@ -204,7 +204,7 @@ class Advice extends Admin_Controller {
 
     public function delete($id = NULL) {
         $input = $this->input->get();
-        $blog = $this->advice_model->get_by_id($input['id']);
+        $blog = $this->advice_model->get_by_id_admin($input['id']);
 
         if (!$blog) {
             $this->output->set_status_header(404)

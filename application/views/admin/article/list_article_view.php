@@ -13,7 +13,6 @@
             <?php
             echo '<table class="table table-hover table-bordered table-condensed">';
             echo '<tr>';
-            echo '<td><input type="checkbox" class="check-all" id="check-all" /></td>';
             echo '<td><b><a href="#">Title</a></b></td>';
             echo '<td><b><a href="#">Category</a></b></td>';
             echo '<td><b>Operations</b></td>';
@@ -21,7 +20,6 @@
             if (!empty($articles)) {
                 foreach ($articles as $item):
                     echo '<tr>';
-                    echo '<td><input type="checkbox" class="checkbox" name="checkbox[' . $item['article_id'][0] . ']" value="' . $item['article_id'][0] . '" /></td>';
                     echo '<td>' . $item['title'][0] . '|' . $item['title'][1] . '</td>';
                     ?>
                     <td><span><?php echo ($item['type'][0] == 0) ? 'Event' : 'News' ?></span></td>

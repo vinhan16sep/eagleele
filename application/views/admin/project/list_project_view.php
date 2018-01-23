@@ -13,14 +13,12 @@
             <?php
             echo '<table class="table table-hover table-bordered table-condensed">';
             echo '<tr>';
-//            echo '<td><input type="checkbox" class="check-all" id="check-all" /></td>';
             echo '<td><b><a href="#">Title</a></b></td>';
             echo '<td><b>Operations</b></td>';
             echo '</tr>';
             if (!empty($projects)) {
                 foreach ($projects as $item):
                     echo '<tr>';
-//                        echo '<td><input type="checkbox" id="' . $item['id'] . '" class="checkbox" name="checkbox[' . $item['id'] . ']" /></td>';
                         echo '<td>' . str_replace('|||', ' | ', $item['data']['project_title']) . '</td>';
                         echo '<td>';
                         echo anchor('admin/comment/index/project/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');

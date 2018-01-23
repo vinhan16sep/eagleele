@@ -119,7 +119,7 @@ class Article extends Admin_Controller {
         $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->article_model->get_by_id($input_id);
+        $result = $this->article_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/article', 'refresh');

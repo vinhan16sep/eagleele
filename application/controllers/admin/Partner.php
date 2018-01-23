@@ -92,7 +92,7 @@ class Partner extends Admin_Controller {
         $this->form_validation->set_rules('name_en', 'Name', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->partner_model->get_by_id($input_id);
+        $result = $this->partner_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/partner', 'refresh');

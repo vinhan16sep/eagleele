@@ -13,7 +13,6 @@
             <?php
             echo '<table class="table table-hover table-bordered table-condensed">';
             echo '<tr>';
-            echo '<td><input type="checkbox" class="check-all" id="check-all" /></td>';
             echo '<td><b><a href="#">Title</a></b></td>';
             echo '<td><b><a href="#">Status</a></b></td>';
             echo '<td><b>Operations</b></td>';
@@ -21,7 +20,6 @@
             if (!empty($recruitments)) {
                 foreach ($recruitments as $item):
                     echo '<tr>';
-                    echo '<td><input type="checkbox" class="checkbox" name="checkbox[' . $item['recruitment_id'][0] . ']" value="' . $item['recruitment_id'][0] . '" /></td>';
                     echo '<td>' . $item['title'][0] . '|' . $item['title'][1] . '</td>';
                     ?>
                     <td><span><?php echo ($item['status'][0] == 0) ? 'Hết hạn' : 'Đang tuyển' ?></span></td>

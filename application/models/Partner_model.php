@@ -89,6 +89,25 @@ class Partner_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function get_by_id_admin($id, $lang = '') {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select('partner.*, GROUP_CONCAT(partner_lang.name ORDER BY partner_lang.language separator \'|||\') as partner_name, 
+                            GROUP_CONCAT(partner_lang.slug ORDER BY partner_lang.language separator \'|||\') as partner_slug,
+                            GROUP_CONCAT(partner_lang.meta_description ORDER BY partner_lang.language separator \'|||\') as partner_meta_description,
+                            GROUP_CONCAT(partner_lang.meta_keywords ORDER BY partner_lang.language separator \'|||\') as partner_meta_keywords,
+                            GROUP_CONCAT(partner_lang.content ORDER BY partner_lang.language separator \'|||\') as partner_content');
+        $this->db->from('partner');
+        $this->db->join('partner_lang', 'partner_lang.partner_id = partner.id', 'left');
+        if($lang != ''){
+            $this->db->where('partner_lang.language', $lang);
+        }
+        $this->db->where('partner.is_deleted', 0);
+        $this->db->where('partner.id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function insert($data) {
         $this->db->set($data)->insert('partner');
 

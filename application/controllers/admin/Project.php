@@ -31,7 +31,7 @@ class Project extends Admin_Controller {
         $output = array();
         foreach($result as $key => $value){
             $output[$key]['id'] = $value['id'];
-            $output[$key]['data'] = $this->project_model->get_by_id($value['id']);
+            $output[$key]['data'] = $this->project_model->get_by_id_admin($value['id']);
         }
         $this->data['projects'] = $output;
 
@@ -111,7 +111,7 @@ class Project extends Admin_Controller {
         $this->form_validation->set_rules('description_en', 'Description', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->project_model->get_by_id($input_id);
+        $result = $this->project_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/project', 'refresh');
