@@ -165,4 +165,13 @@ $lang['library_image'] = 'Hình ảnh';
 $lang['library_study'] = 'Bài học';
 $lang['library_share'] = 'Chia sẻ';
 
-//Training
+//Comments
+$lang['comment_name'] = 'Họ và Tên';
+$lang['comment_message'] = 'Ý kiến nhận xét';
+$lang['comment_placeholder_name'] = 'Họ tên quý khách';
+$lang['comment_placeholder_message'] = 'Tin nhắn cho chúng tôi...';
+$lang['comment_placeholder_email'] = 'Email quý khách';
+$lang['comment_submit'] = 'Gửi nhận xét';
+$lang['comment_seemore'] = 'Xem thêm bình luận';
+$lang['comment_nocomment'] = 'Chưa có bình luận nào cho bài viết này';
+
