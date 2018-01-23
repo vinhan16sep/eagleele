@@ -68,7 +68,6 @@ class Article extends Admin_Controller {
                     'type' => $type,
                     'description_image' => $image,
                     'banner' => $banner,
-                    'category_id' => ($type == 0) ? null : $this->input->post('category'),
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
                     'modified_at' => $this->author_info['modified_at'],
@@ -209,7 +208,6 @@ class Article extends Admin_Controller {
                     'type' => $type,
                     'description_image' => $image,
                     'banner' => $banner,
-                    'category_id' => ($type == 0) ? null : $this->input->post('category'),
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
@@ -260,20 +258,24 @@ class Article extends Admin_Controller {
     }
 
     public function delete($id = NULL) {
-        $result = $this->article_model->get_by_id($id);
+        $input = $this->input->get();
+        $project = $this->article_model->get_by_id_admin($input['id']);
 
-        if (!$result) {
-            redirect('admin/article', 'refresh');
+        if (!$project) {
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
         }
 
         $set_delete = array('is_deleted' => 1);
-        try {
-            $this->article_model->remove($id, $set_delete);
-            $this->session->set_flashdata('message', 'Item has deleted successful.');
-        } catch (Exception $e) {
-            $this->session->set_flashdata('message', 'Have error while delete item: ' . $e->getMessage());
+        $result = $this->article_model->remove($input['id'], $set_delete);
+
+        if($result == false){
+            $this->output->set_status_header(404)
+                ->set_output(json_encode(array('message' => 'Fail', 'data' => $input)));
+        }else{
+            $this->output->set_status_header(200)
+                ->set_output(json_encode(array('message' => 'Success', 'data' => $input)));
         }
-        redirect('admin/article', 'refresh');
     }
 
     public function build_category_dropdown(){
