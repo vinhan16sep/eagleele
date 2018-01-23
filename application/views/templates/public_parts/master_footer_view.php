@@ -68,7 +68,7 @@
 </body>
 <script>
     <?php if($show_intro_popup == 1): ?>
-        $('#introModal').modal('show');
+        //$('#introModal').modal('show');
     <?php endif; ?>
 
     $(function () {
