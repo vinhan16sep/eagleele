@@ -11,11 +11,12 @@
 					<h2><?php echo $this->lang->line('advice') ?></h2>
 					<div class="title-underline"></div>
 				</div>
-				
-				<h1><?php echo $advice['advice_title']; ?></h1>
-				
-				<?php echo $advice['advice_content']; ?>
-				
+
+                <article>
+                    <h1><?php echo $advice['advice_title']; ?></h1>
+
+                    <?php echo $advice['advice_content']; ?>
+                </article>
 			</div>
 <!--			<div class="right col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
 <!--				<div class="content-title">-->

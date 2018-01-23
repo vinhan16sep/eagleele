@@ -118,6 +118,20 @@ a:hover{
 
 /*
 
+=========== RESTYLE ALL ARTICLES ===========
+
+ */
+
+article img {
+	max-width: 100% !important;
+}
+
+.news-post img{
+	width: auto;
+}
+
+/*
+
 =========== HEADER ===========
 
  */
@@ -475,8 +489,10 @@ label.quote{
 	border-bottom: 2px solid #f4f4f4;
 }
 
-.news-post img{
-	width: auto;
+
+
+.news-post #comment img{
+	width: 128px;
 }
 
 .news-recruit{
