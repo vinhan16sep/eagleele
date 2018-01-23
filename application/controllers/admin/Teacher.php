@@ -26,7 +26,14 @@ class Teacher extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $this->data['teachers'] = $this->teacher_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->teacher_model->get_all_with_pagination($per_page, $this->data['page']);
+
+        $output = array();
+        foreach($result as $key => $value){
+            $output[$key]['id'] = $value['id'];
+            $output[$key]['data'] = $this->teacher_model->get_by_id_admin($value['id']);
+        }
+        $this->data['teachers'] = $output;
 
         $this->render('admin/teacher/list_teacher_view');
     }
@@ -95,7 +102,7 @@ class Teacher extends Admin_Controller {
         $this->form_validation->set_rules('name_en', 'Full name', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->teacher_model->get_by_id($input_id);
+        $result = $this->teacher_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/teacher', 'refresh');

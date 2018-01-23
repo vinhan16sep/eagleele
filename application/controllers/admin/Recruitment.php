@@ -26,7 +26,14 @@ class Recruitment extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $this->data['recruitments'] = $this->recruitment_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->recruitment_model->get_all_with_pagination($per_page, $this->data['page']);
+
+        $output = array();
+        foreach($result as $key => $value){
+            $output[$key]['id'] = $value['id'];
+            $output[$key]['data'] = $this->recruitment_model->get_by_id_admin($value['id']);
+        }
+        $this->data['recruitments'] = $output;
 
         $this->render('admin/recruitment/list_recruitment_view');
     }
@@ -101,7 +108,7 @@ class Recruitment extends Admin_Controller {
         $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->recruitment_model->get_by_id($input_id);
+        $result = $this->recruitment_model->get_by_id_admin($input_id);
 
         if (!$result || $result['id'] == null) {
             redirect('admin/recruitment', 'refresh');

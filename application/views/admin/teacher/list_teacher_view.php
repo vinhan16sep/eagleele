@@ -19,9 +19,9 @@
             if (!empty($teachers)) {
                 foreach ($teachers as $item):
                     echo '<tr>';
-                    echo '<td>' . $item['name'][0] . '|' . $item['name'][1] . '</td>';
-                    echo '<td>' . anchor('admin/teacher/edit/' . $item['teacher_id'][0], '<span class="glyphicon glyphicon-pencil"></span>');
-                    echo ' ' . anchor('admin/teacher/delete/' . $item['teacher_id'][0], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<td>' . str_replace('|||', ' | ', $item['data']['teacher_name']) . '</td>';
+                    echo '<td>' . anchor('admin/teacher/edit/' . $item['id'], '<span class="glyphicon glyphicon-pencil"></span>');
+                    echo ' ' . anchor('admin/teacher/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
                     echo '</tr>';
                 endforeach;
             }else {

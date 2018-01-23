@@ -9,25 +9,35 @@ class Article_model extends CI_Model {
     }
 
     public function get_all_with_pagination($limit = NULL, $start = NULL) {
-        $this->db->select('article.*, al.*');
+        $this->db->select('*');
         $this->db->from('article');
-        $this->db->join('article_lang al', 'al.article_id = article.id');
-        $this->db->where('article.is_deleted', 0);
+        $this->db->where('is_deleted', 0);
         $this->db->limit($limit, $start);
-        $this->db->order_by("article.id", "desc");
+        $this->db->order_by("id", "desc");
 
-        $result = $this->db->get()->result_array();
-
-        $converted_data = array();
-
-        for($i = 0; $i < count($result); $i++){
-            if(($i % 2) == 0){
-                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
-            }
-        }
-
-        return $converted_data;
+        return $result = $this->db->get()->result_array();
     }
+
+//    public function get_all_with_pagination($limit = NULL, $start = NULL) {
+//        $this->db->select('article.*, al.*');
+//        $this->db->from('article');
+//        $this->db->join('article_lang al', 'al.article_id = article.id');
+//        $this->db->where('article.is_deleted', 0);
+//        $this->db->limit($limit, $start);
+//        $this->db->order_by("article.id", "desc");
+//
+//        $result = $this->db->get()->result_array();
+//
+//        $converted_data = array();
+//
+//        for($i = 0; $i < count($result); $i++){
+//            if(($i % 2) == 0){
+//                $converted_data[] = array_merge_recursive($result[$i], $result[$i + 1]);
+//            }
+//        }
+//
+//        return $converted_data;
+//    }
 
     public function get_all_by_language($lang){
         $this->db->select('*');

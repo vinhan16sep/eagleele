@@ -26,7 +26,14 @@ class Partner extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $this->data['partners'] = $this->partner_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->partner_model->get_all_with_pagination($per_page, $this->data['page']);
+
+        $output = array();
+        foreach($result as $key => $value){
+            $output[$key]['id'] = $value['id'];
+            $output[$key]['data'] = $this->partner_model->get_by_id_admin($value['id']);
+        }
+        $this->data['partners'] = $output;
 
         $this->render('admin/partner/list_partner_view');
     }
