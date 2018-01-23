@@ -9,12 +9,7 @@
 			</div>
 			<ul>
 				<li><a href="<?php echo site_url('introduce'); ?>"><?php echo $this->lang->line('about_us'); ?></a></li>
-				<li><a href="<?php echo site_url('introduce/why_us'); ?>"><?php echo $this->lang->line('why_us'); ?></a></li>
-				
-				<li><a href="<?php echo site_url('introduce/message'); ?>"><?php echo $this->lang->line('message'); ?></a></li>
-				<li><a href="<?php echo site_url('introduce/vision'); ?>"><?php echo $this->lang->line('visison'); ?></a></li>
 				<li><a href="<?php echo site_url('introduce/teachers'); ?>"><?php echo $this->lang->line('teachers'); ?></a></li>
-				<li><a href="<?php echo site_url('introduce/partners'); ?>"><?php echo $this->lang->line('partners'); ?></a></li>
 			</ul>
 		</div>
 		

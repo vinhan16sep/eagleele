@@ -24,9 +24,15 @@
                     ?>
                     <td><span><?php echo ($item['data']['type'][0] == 0) ? 'Event' : 'News' ?></span></td>
                     <?php
-                    echo '<td>' . anchor('admin/comment/index/article/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');
-                    echo ' '.anchor('admin/article/edit/' . $item['id'], '<span class="glyphicon glyphicon-pencil"></span>');
-                    echo ' ' . anchor('admin/article/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<td>';
+                    echo anchor('admin/comment/index/article/' . $item['id'], '<span class="glyphicon glyphicon-comment"></span>');
+                    echo '<a href="' . base_url('admin/article/edit/' . $item['id']) . '">';
+                    echo '<span class="glyphicon glyphicon-pencil"></span>';
+                    echo '</a>';
+                    echo '<a href="javascript:void(0);" onclick="deleteItem(' . $item['id'] . ')">';
+                    echo '<span class="glyphicon glyphicon-remove"></span>';
+                    echo '</a>';
+                    echo '</td>';
                     echo '</tr>';
                 endforeach;
             }else {
@@ -40,3 +46,31 @@
         </div>
     </div>  
 </div>
+<script>
+    function deleteItem(id){
+        if(confirm('Chắc chắn xoá?')){
+            var url = '<?php echo base_url('admin/article/delete'); ?>';
+
+            $.ajax({
+                url: url,
+                method: 'get',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function(res){
+                    console.log(res);
+                    if(res.message == 'Success'){
+                        alert('Xoá thành công');
+                        location.reload();
+                    }else{
+                        alert('Xoá thất bại');
+                    }
+                },
+                error: function(){
+
+                }
+            });
+        }
+    }
+</script>

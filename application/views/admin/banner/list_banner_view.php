@@ -28,7 +28,10 @@
                     echo '<td>' . $item['text'] . '</td>';
                     echo '<td><img src="' . site_url('assets/upload/banner/' . $item['image']) . '" /></td>';
                     echo '<td>';
-                    echo ' ' . anchor('admin/banner/delete/' . $item['id'], '<span class="glyphicon glyphicon-remove"></span>') . '</td>';
+                    echo '<a href="javascript:void(0);" onclick="deleteItem(' . $item['id'] . ')">';
+                    echo '<span class="glyphicon glyphicon-remove"></span>';
+                    echo '</a>';
+                    echo '</td>';
                     echo '</tr>';
                 endforeach;
             }else {
@@ -42,3 +45,31 @@
         </div>
     </div>
 </div>
+<script>
+    function deleteItem(id){
+        if(confirm('Chắc chắn xoá?')){
+            var url = '<?php echo base_url('admin/banner/delete'); ?>';
+
+            $.ajax({
+                url: url,
+                method: 'get',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function(res){
+                    console.log(res);
+                    if(res.message == 'Success'){
+                        alert('Xoá thành công');
+                        location.reload();
+                    }else{
+                        alert('Xoá thất bại');
+                    }
+                },
+                error: function(){
+
+                }
+            });
+        }
+    }
+</script>

@@ -71,7 +71,7 @@
                         <?php if(isset($events[$i])): ?>
                             <div class="index-coach-left-item col-md-4 col-sm-12 col-xs-12">
                                 <img src="<?php echo base_url('assets/upload/article/' . $events[$i]['description_image']); ?>">
-                                <a href="<?php echo site_url('article/detail/' . $events[$i]['article_id']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
+                                <a href="<?php echo site_url('article/detail/' . $events[$i]['slug']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
                             </div>
                         <?php endif; ?>
                     <?php } ?>
@@ -111,7 +111,7 @@
                                 <?php if(isset($teachers[$i])): ?>
                                     <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <img src="<?php echo base_url('assets/upload/teacher/' . $teachers[$i]['description_image']); ?>">
-                                        <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['teacher_id']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
+                                        <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['slug']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
                                         <p><?php echo $teachers[$i]['position']; ?></p>
                                     </div>
                                 <?php endif; ?>
@@ -272,26 +272,20 @@
                         <h2><?php echo $this->lang->line('index_student_thinking'); ?></h2>
                         <div class="title-underline"></div>
                     </div>
-
+                    <?php if($testimonials): ?>
                     <div class="row">
+                        <?php foreach ($testimonials as $value): ?>
                         <div class="item col-md-4 col-sm-12 col-xs-12">
-                            <img src="<?php echo base_url('assets/public/img/student-2.jpg'); ?>">
-
-                            <?php if($lang == 'vi'): ?>
-                                <p>Tôi nhận được những giá trị vượt xa so với học phí, học xong giúp ích ngay cho công việc của tôi.</p>
-                                <p class="note">
-                                    Ngọc Anh <br>
-                                    Trưởng phòng Thiết kế Mato
-                                </p>
-                            <?php elseif($lang == 'en'): ?>
-                                <p>I get the value far beyond the tuition fee, learning to help immediately for my work.</p>
-                                <p class="note">
-                                    Ngoc Anh <br>
-                                    Head of Design Department Mato
-                                </p>
-                            <?php  endif; ?>
+                            <img src="<?php echo base_url('assets/upload/testimonial/'.$value['image']); ?>">
+                            <?php echo $value['content'] ?>
+                            <p class="note">
+                                <?php echo $value['name'] ?> <br>
+                                <?php echo $value['position'] ?>
+                            </p>
                         </div>
+                        <?php endforeach; ?>
                     </div>
+                    <?php  endif; ?>
 
                 </div>
             </div>

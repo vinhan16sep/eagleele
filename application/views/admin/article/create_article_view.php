@@ -163,13 +163,6 @@
                                     echo form_upload('banner', set_value('banner'), 'class="form-control"');
                                     ?>
                                 </div>
-                                <div class="form-group category">
-                                    <?php
-                                    echo form_label('Category', 'category');
-                                    echo form_error('category');
-                                    echo form_dropdown('category', $categories, set_value('category', ''), 'class="form-control"');
-                                    ?>
-                                </div>
                                 <div class="form-group etime">
                                     <?php
                                     echo form_label('Thời gian', 'time');
