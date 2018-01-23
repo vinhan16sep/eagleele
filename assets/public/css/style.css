@@ -122,6 +122,10 @@ a:hover{
 
  */
 
+article{
+	margin-bottom: 30px;
+}
+
 article img {
 	max-width: 100% !important;
 }
@@ -275,6 +279,7 @@ nav ul > li > ul > li:last-of-type{
 .main-content{
 	margin-top: 30px;
 	min-height: 700px;
+	padding-bottom: 50px;
 }
 
 .slide{
@@ -531,6 +536,10 @@ label.quote{
 	width: 100%;
 	min-height: 600px;
 	max-height: 800px;
+}
+
+#comment_readmore{
+	margin-bottom: 30px;
 }
 
 /*

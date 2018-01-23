@@ -164,3 +164,13 @@ $lang['library_video'] = 'Video';
 $lang['library_image'] = 'Images';
 $lang['library_study'] = 'Lessons';
 $lang['library_share'] = 'Share';
+
+//Comments
+$lang['comment_name'] = 'Full name';
+$lang['comment_message'] = 'Message';
+$lang['comment_placeholder_name'] = 'Your full name here';
+$lang['comment_placeholder_message'] = 'Message for us...';
+$lang['comment_placeholder_email'] = 'Your email here';
+$lang['comment_submit'] = 'Submit';
+$lang['comment_seemore'] = 'See more comments';
+$lang['comment_nocomment'] = 'No comment for this post';
