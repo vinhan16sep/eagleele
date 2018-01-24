@@ -36,7 +36,9 @@
                 <?php foreach($libraries as $item): ?>
                 <div class="grid-item all <?php echo $type[$item['type']]; ?>">
                     <div class="inner">
-                        <img src="<?php echo base_url('assets/upload/library/' . $item['description_image']); ?>">
+                        <img src="<?php echo (isset($item['description_image']) && !empty($item['description_image'])) ?
+                            base_url('assets/upload/library/' . $item['description_image'])
+                            : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                         <a href="<?php echo site_url('library/detail/' . $item['slug']); ?>">
                             <label><?php echo $item['title']; ?></label>
                         </a>

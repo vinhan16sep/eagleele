@@ -7,7 +7,9 @@
         <?php foreach($articles as $key => $item): ?>
         <div class="row">
             <div class="news-img col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <img src="<?php echo base_url('assets/upload/article/' . $item['description_image']); ?>">
+                <img src="<?php echo (isset($item['description_image']) && !empty($item['description_image'])) ?
+                    base_url('assets/upload/article/' . $item['description_image'])
+                    : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
             </div>
             <div class="news-intro col-lg-5 col-md-5 col-sm-5 col-xs-12">
 

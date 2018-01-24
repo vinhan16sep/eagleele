@@ -70,7 +70,9 @@
                     <?php for($i = 0; $i < 3; $i++) { ?>
                         <?php if(isset($events[$i])): ?>
                             <div class="index-coach-left-item col-md-4 col-sm-12 col-xs-12">
-                                <img src="<?php echo base_url('assets/upload/article/' . $events[$i]['description_image']); ?>">
+                                <img src="<?php echo (isset($events[$i]['description_image']) && !empty($events[$i]['description_image'])) ?
+                                    base_url('assets/upload/article/' . $events[$i]['description_image'])
+                                    : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                                 <a href="<?php echo site_url('article/detail/' . $events[$i]['slug']); ?>"><label> <?php echo $events[$i]['title']; ?></label></a>
                             </div>
                         <?php endif; ?>
@@ -110,7 +112,9 @@
                             <?php for($i = 0; $i < 4; $i++) { ?>
                                 <?php if(isset($teachers[$i])): ?>
                                     <div class="index-coach-left-item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <img src="<?php echo base_url('assets/upload/teacher/' . $teachers[$i]['description_image']); ?>">
+                                        <img src="<?php echo (isset($teachers[$i]['description_image']) && !empty($teachers[$i]['description_image'])) ?
+                                            base_url('assets/upload/teacher/' . $teachers[$i]['description_image'])
+                                            : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                                         <a href="<?php echo site_url('introduce/detail_teacher/' . $teachers[$i]['slug']); ?>"><label> <?php echo $teachers[$i]['name']; ?></label></a>
                                         <p><?php echo $teachers[$i]['position']; ?></p>
                                     </div>
@@ -220,7 +224,9 @@
                             <?php foreach($libraries as $item): ?>
                             <div class="item col-md-4 col-sm-12 col-xs-12">
                                 <div class="mask">
-                                    <img src="<?php echo base_url('assets/upload/library/' . $item['description_image']) ?>" alt="img">
+                                    <img src="<?php echo (isset($item['description_image']) && !empty($item['description_image'])) ?
+                                        base_url('assets/upload/library/' . $item['description_image'])
+                                        : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                                 </div>
                                 <a href="<?php echo site_url('library/detail/' . $item['slug']); ?>">
                                     <h3><?php echo $item['title']; ?></h3>
@@ -249,7 +255,9 @@
                             <?php foreach($news as $item): ?>
                                 <div class="item col-md-4 col-sm-12 col-xs-12">
                                     <div class="mask">
-                                        <img src="<?php echo base_url('assets/upload/article/' . $item['description_image']) ?>" alt="img">
+                                        <img src="<?php echo (isset($item['description_image']) && !empty($item['description_image'])) ?
+                                                        base_url('assets/upload/article/' . $item['description_image'])
+                                                        : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                                     </div>
                                     <a href="<?php echo site_url('article/detail/' . $item['slug']); ?>">
                                         <h3><?php echo $item['title']; ?></h3>
@@ -276,7 +284,9 @@
                     <div class="row">
                         <?php foreach ($testimonials as $value): ?>
                         <div class="item col-md-4 col-sm-12 col-xs-12">
-                            <img src="<?php echo base_url('assets/upload/testimonial/'.$value['image']); ?>">
+                            <img src="<?php echo (isset($value['description_image']) && !empty($value['description_image'])) ?
+                                            base_url('assets/upload/testimonial/' . $value['description_image'])
+                                            : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
                             <?php echo $value['content'] ?>
                             <p class="note">
                                 <?php echo $value['name'] ?> <br>

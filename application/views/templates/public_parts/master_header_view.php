@@ -167,9 +167,9 @@
                 </nav>
             </div>
             <div class="topnav-right col-lg-2 col-md-2 hidden-sm hidden-xs">
-                <div class="search">
-                    <input type="text" class="form-control" id="inputSearch" placeholder="Tìm kiếm">
-                </div>
+<!--                <div class="search">-->
+<!--                    <input type="text" class="form-control" id="inputSearch" placeholder="Tìm kiếm">-->
+<!--                </div>-->
                 <div class="language">
                     <a href="<?php echo $url_en; ?>">e</a> | <a href="<?php echo $url_vi; ?>">V</a>
                 </div>

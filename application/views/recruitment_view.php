@@ -5,10 +5,12 @@
         <?php foreach($recruitments as $item): ?>
         <div class="news-recruit col-md-4 col-sm-4 col-xs-12">
             <div class="news-img">
-                <img src="<?php echo base_url('assets/upload/recruitment/' . $item['description_image']); ?>">
+                <img src="<?php echo (isset($item['description_image']) && !empty($item['description_image'])) ?
+                    base_url('assets/upload/recruitment/' . $item['description_image'])
+                    : base_url('assets/public/img/no-intro-image.jpg'); ?>" alt="img">
             </div>
             <div class="news-intro">
-                <a href="<?php echo site_url('recruitment/detail/' . $item['recruitment_id']); ?>">
+                <a href="<?php echo site_url('recruitment/detail/' . $item['slug']); ?>">
                     <h2 class="headline"><?php echo $item['title']; ?></h2>
                 </a>
 
