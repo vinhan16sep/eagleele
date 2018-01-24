@@ -61,6 +61,18 @@ if($this->ion_auth->logged_in()) {
                     <span>Video Youtube</span>
                 </a>
             </li>
+            <li class="sub-menu">
+                <a href="<?php echo site_url('admin/testimonial'); ?>" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Ý kiến học viên</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="<?php echo site_url('admin/contact'); ?>" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>
