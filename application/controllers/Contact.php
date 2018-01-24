@@ -26,12 +26,23 @@ class Contact extends Public_Controller {
     }
 
     public function create(){
+        $this->load->model('contact_model');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $params = array();
         parse_str($this->input->post('input'), $params);
 
         $send = $this->send_mail($params);
+        $data = array(
+            'name' => $params['name'],
+            'email' => $params['email'],
+            'phone' => $params['phone'],
+            'reason' => $params['reason'],
+            'content' => $params['content'],
+            'created_at' => date('Y-m-d H:i:s')
+        );
+        $contact = $this->contact_model->insert($data);
 
-        if($send == false){
+        if($send == false && $contact == false){
             $this->output->set_status_header(404)
                 ->set_output(json_encode(array('message' => 'Fail', 'data' => $params)));
         }else{
