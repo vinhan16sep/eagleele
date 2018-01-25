@@ -40,9 +40,12 @@
         <div class="" id="index-about">
             <div class="shadow">
                 <div class="row">
-                    <div class="index-about col-md-8 col-sm-8 col-xs-12">
+                    <div class="index-about col-md-12 col-sm-12 col-xs-12">
                         <div class="content-title">
+                            <a href="<?php echo site_url('introduce'); ?>"><img src="<?php echo base_url('assets/public/img/logo-new.jpg'); ?>" style="width:20% !important;"></a>
+                            <br>
                             <h2><?php echo $this->lang->line('index_about_us'); ?></h2>
+
                             <div class="title-underline"></div>
                         </div>
                         <?php if($lang == 'vi'): ?>
@@ -52,9 +55,8 @@
                         <?php  endif; ?>
                     </div>
 
-                    <div class="index-about col-md-4 col-sm-4 col-xs-12">
-                        <a href="<?php echo site_url('introduce'); ?>"><img src="<?php echo base_url('assets/public/img/logo.png'); ?>"></a>
-                    </div>
+<!--                    <div class="index-about col-md-4 col-sm-4 col-xs-12">-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -79,8 +81,28 @@
                     <?php } ?>
                     </div>
                 </div>
+
+                <div class="index-side col-lg-6 col-md-6 hidden-sm hidden-xs">
+                    <div class="shadow">
+                        <?php if(isset($video[0])): ?>
+                            <div class="content-title">
+                                <h2>Video</h2>
+                                <div class="title-underline"></div>
+                            </div>
+                            <div class="index-video">
+                                <!--
+                                    Allow embed a youtube video into homepage, change link in src. All style fixed.
+                                -->
+
+                                <iframe src="<?php echo $video[0]['url']; ?>" frameborder="0" allowfullscreen></iframe>
+
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
             </div>
-            <div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
+            <!--<div class="index-side col-lg-4 col-md-4 hidden-sm hidden-xs">
                 <div class="shadow">
                     <?php if(isset($video[0])): ?>
                     <div class="content-title">
@@ -88,16 +110,14 @@
                         <div class="title-underline"></div>
                     </div>
                     <div class="index-video">
-                        <!--
-                            Allow embed a youtube video into homepage, change link in src. All style fixed.
-                        -->
+
 
                         <iframe src="<?php echo $video[0]['url']; ?>" frameborder="0" allowfullscreen></iframe>
 
                     </div>
                     <?php endif; ?>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <div class="row">

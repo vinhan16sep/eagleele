@@ -17,7 +17,7 @@ class Advice extends Public_Controller {
         $this->data['advices'] = $this->advice_model->get_all_by_language($this->data['lang']);
 //        print_r($this->data['advices']);die;
 
-        $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Tuyển dụng' : 'advice';
+        $this->data['title'] = ($this->data['lang'] == 'vi') ? 'Tư vấn' : 'Advice';
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Tư vấn' : 'advice';
         $this->data['meta_keywords'] = ($this->data['lang'] == 'vi') ? 'Tư vấn' : 'advice';
 
