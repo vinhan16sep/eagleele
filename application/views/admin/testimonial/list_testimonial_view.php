@@ -26,6 +26,9 @@
                     echo '<td>' . str_replace('|||', ' | ', $item['position']) . '</td>';
                     echo '<td>' . str_replace('|||', ' | ', $item['content']) . '</td>';
                     echo '<td>';
+                    echo '<a href="' . base_url('admin/testimonial/edit/' . $item['id']) . '">';
+                    echo '<span class="glyphicon glyphicon-pencil"></span>';
+                    echo '</a>';
                     echo '<a href="javascript:void(0);" onclick="deleteItem(' . $item['id'] . ')">';
                     echo '<span class="glyphicon glyphicon-remove"></span>';
                     echo '</a>';

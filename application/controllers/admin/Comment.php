@@ -11,10 +11,6 @@ class Comment extends Admin_Controller{
 	public function index(){
         $detail_id = $this->uri->segment(5);
         $category = $this->uri->segment(4);
-//        switch ($category){
-//            case 'recruitment':
-//                $model = $this->re
-//        }
         $this->load->model($category.'_model');
         $model = $category.'_model';
         if($category == 'new-comment'){

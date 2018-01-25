@@ -2,20 +2,20 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Intro extends Admin_Controller {
+class Introduce extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('intro_model');
+        $this->load->model('introduce_model');
         $this->load->library('session');
     }
 
     public function index() {
         $this->load->library('pagination');
         $config = array();
-        $base_url = base_url() . 'admin/intro/index';
-        $total_rows = $this->intro_model->count_all();
+        $base_url = base_url() . 'admin/introduce/index';
+        $total_rows = $this->introduce_model->count_all();
         $per_page = 10;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
@@ -26,16 +26,16 @@ class Intro extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $result = $this->intro_model->get_all_with_pagination($per_page, $this->data['page']);
+        $result = $this->introduce_model->get_all_with_pagination($per_page, $this->data['page']);
 
         $output = array();
         foreach($result as $key => $value){
             $output[$key]['id'] = $value['id'];
-            $output[$key]['data'] = $this->intro_model->get_by_id($value['id']);
+            $output[$key]['data'] = $this->introduce_model->get_by_id($value['id']);
         }
-        $this->data['intros'] = $output;
+        $this->data['introduces'] = $output;
 
-        $this->render('admin/intro/list_intro_view');
+        $this->render('admin/introduce/list_introduce_view');
     }
 
     public function edit($id = NULL) {
@@ -46,25 +46,25 @@ class Intro extends Admin_Controller {
         $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $result = $this->intro_model->get_by_id($input_id);
+        $result = $this->introduce_model->get_by_id($input_id);
 
         if (!$result || $result['id'] == null) {
-            redirect('admin/intro', 'refresh');
+            redirect('admin/introduce', 'refresh');
         }
 
         // Title
-        $title = explode('|||', $result['intro_title']);
+        $title = explode('|||', $result['introduce_title']);
         $result['title_en'] = isset($title[0]) ? $title[0] : '';
         $result['title_vi'] = isset($title[1]) ? $title[1] : '';
 
         // Content
-        $content = explode('|||', $result['intro_content']);
+        $content = explode('|||', $result['introduce_content']);
         $result['content_en'] = $content[0];
         $result['content_vi'] = $content[1];
 
         if ($this->form_validation->run() == FALSE) {
-            $this->data['intro'] = $result;
-            $this->render('admin/intro/edit_intro_view');
+            $this->data['introduce'] = $result;
+            $this->render('admin/introduce/edit_introduce_view');
         } else {
             if ($this->input->post()) {
                 $data = array(
@@ -73,26 +73,26 @@ class Intro extends Admin_Controller {
                 );
 
                 try {
-                    $this->intro_model->update($input_id, $data);
+                    $this->introduce_model->update($input_id, $data);
                     $data_vi = array(
                         'title' => $this->input->post('title_vi'),
                         'content' => $this->input->post('content_vi')
                     );
-                    $this->intro_model->update_with_language_vi($input_id, $data_vi);
+                    $this->introduce_model->update_with_language_vi($input_id, $data_vi);
 
                     $data_en = array(
                         'title' => $this->input->post('title_en'),
                         'content' => $this->input->post('content_en')
                     );
 
-                    $this->intro_model->update_with_language_en($input_id, $data_en);
+                    $this->introduce_model->update_with_language_en($input_id, $data_en);
 
                     $this->session->set_flashdata('message', 'Item updated successfully');
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
                 }
 
-                redirect('admin/intro', 'refresh');
+                redirect('admin/introduce', 'refresh');
             }
         }
     }
