@@ -65,7 +65,7 @@
             $url_en = base_url() . 'en/' . 'introduce/detail_partner/' . $partner_slug_en;
             $url_vi = base_url() . 'vi/' . 'introduce/detail_partner/' . $partner_slug_vi;
             break;
-            
+
         case 'list_project':
             $url_en = base_url() . 'en/' . 'project';
             $url_vi = base_url() . 'vi/' . 'project';
@@ -146,7 +146,17 @@
             <div class="col-lg-8 col-md-8 hidden-sm hidden-xs">
                 <nav class="nav hidden-xs hidden-sm">
                     <ul>
-                        <li><a href="<?php echo site_url('introduce'); ?>"><?php echo $this->lang->line('introduce'); ?></a></li>
+                        <li>
+                            <a href="javascript:void(0);"><?php echo $this->lang->line('introduce'); ?></a>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="<?php echo site_url('introduce'); ?>" style="font-size: 10pt !important;"><?php echo $this->lang->line('introduce'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('introduce/teachers'); ?>" style="font-size: 10pt !important;"><?php echo $this->lang->line('index_coach'); ?></a>
+                                </li>
+                            </ul>
+                        </li>
                         <li><a href="<?php echo site_url('project'); ?>"><?php echo $this->lang->line('training'); ?></a></li>
                         <li><a href="<?php echo site_url('advice'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
                         <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
@@ -197,7 +207,17 @@
                 <div class="collapse" id="collapseExample">
                     <div class="well">
                         <ul>
-                            <li><a href="<?php echo site_url('introduce'); ?>"><?php echo $this->lang->line('introduce'); ?></a></li>
+                            <li>
+                                <a href="javascript:void(0);"><?php echo $this->lang->line('introduce'); ?></a>
+                                <ul class="">
+                                    <li>
+                                        <a href="<?php echo site_url('introduce'); ?>"><?php echo $this->lang->line('introduce'); ?></a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url('introduce/teachers'); ?>"><?php echo $this->lang->line('index_coach'); ?></a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><a href="<?php echo site_url('training'); ?>"><?php echo $this->lang->line('training'); ?></a></li>
                             <li><a href="<?php echo site_url('advice/index/1'); ?>"><?php echo $this->lang->line('advice'); ?></a></li>
                             <li><a href="<?php echo site_url('article'); ?>"><?php echo $this->lang->line('events'); ?></a></li>

@@ -30,7 +30,6 @@ class Testimonial extends Admin_Controller{
 
         $testimonials = $this->testimonial_model->get_all_with_pagination($per_page, $this->data['page']);
         $this->data['testimonials'] = $testimonials;
-//        print_r($testimonials);die;
 
         $this->render('admin/testimonial/list_testimonial_view');
     }
@@ -71,6 +70,56 @@ class Testimonial extends Admin_Controller{
             }
         }
 
+    }
+
+    public function edit($id = null) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $input_id = isset($id) ? (int) $id : (int) $this->input->post('id');
+        $result = $this->testimonial_model->get_by_id($input_id);
+        if(!$result){
+            redirect('admin/testimonial', 'refresh');
+        }
+
+        $this->form_validation->set_rules('name', 'Họ tên', 'required');
+        $this->form_validation->set_rules('position', 'Chức danh', 'required');
+        $this->form_validation->set_rules('content', 'Nội dung', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['testimonial'] = $result;
+            $this->render('admin/testimonial/edit_testimonial_view');
+        } else {
+            if ($this->input->post()) {
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->testimonial_model->build_unique_slug($slug);
+                $image = $this->upload_image('picture', $_FILES['picture']['name'], 'assets/upload/testimonial', 'assets/upload/testimonial/thumb');
+
+                $data = array(
+                    'image' => $image,
+                    'name' => $this->input->post('name'),
+                    'slug' => $unique_slug,
+                    'position' => $this->input->post('position'),
+                    'content' => $this->input->post('content'),
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                if ($image == '') {
+                    unset($data['image']);
+                }
+
+                try {
+                    $this->testimonial_model->update($input_id, $data);
+
+                    $this->session->set_flashdata('message', 'Item update successfully');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'There was an error when update item: ' . $e->getMessage());
+                }
+
+                redirect('admin/testimonial', 'refresh');
+            }
+        }
     }
 
 

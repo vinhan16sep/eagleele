@@ -22,6 +22,11 @@ if($this->ion_auth->logged_in()) {
                     </a>
                 </li>
                 <li class="sub-menu">
+                    <a href="<?php echo site_url('admin/introduce'); ?>" class="">
+                        <span>Về chúng tôi</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
                     <a href="<?php echo site_url('admin/teacher'); ?>" class="">
                         <span>Giảng viên</span>
                     </a>

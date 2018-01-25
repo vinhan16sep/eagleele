@@ -43,6 +43,16 @@ class Testimonial_model extends CI_Model{
         return $temp_slug;
     }
 
+    public function get_by_id($id, $lang = '') {
+        $this->db->select('*');
+        $this->db->from('testimonial');
+        $this->db->where('is_deleted', 0);
+        $this->db->where('id', $id);
+        $this->db->limit(1);
+
+        return $this->db->get()->row_array();
+    }
+
     public function insert($data) {
         $this->db->set($data)->insert('testimonial');
 
@@ -51,6 +61,12 @@ class Testimonial_model extends CI_Model{
         }
 
         return false;
+    }
+
+    public function update($id, $data) {
+        $this->db->where('id', $id);
+
+        return $this->db->update('testimonial', $data);
     }
 
     public function delete($id){

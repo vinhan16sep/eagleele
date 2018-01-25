@@ -22,6 +22,9 @@ class Introduce extends Public_Controller {
         $this->data['meta_description'] = ($this->data['lang'] == 'vi') ? 'Giới thiệu về chúng tôi' : 'About us';
         $this->data['meta_keywords'] = ($this->data['lang'] == 'vi') ? 'Giới thiệu về chúng tôi' : 'About us';
 
+        $this->load->model('introduce_model');
+        $this->data['introduce'] = $this->introduce_model->get_by_id(1, $this->data['lang']);
+
         $this->render('introduce_view');
 	}
 
