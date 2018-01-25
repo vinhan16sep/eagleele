@@ -83,7 +83,6 @@ class Introduce extends Public_Controller {
         $this->data['current_link'] = 'detail_teacher';
         $teacher = $this->teacher_model->get_by_id($slug, $this->data['lang']);
         $this->data['teacher'] = $teacher;
-//        print_r($teacher);die;
 
         switch ($teacher['teacher_language']){
             case 'vi':
@@ -102,7 +101,7 @@ class Introduce extends Public_Controller {
             redirect('', 'refresh');
         }
 
-        $this->data['title'] = $this->data['teacher']['teacher_slug'];
+        $this->data['title'] = $this->data['teacher']['teacher_name'];
         $this->data['meta_description'] = $this->data['teacher']['teacher_meta_description'];
         $this->data['meta_keywords'] = $this->data['teacher']['teacher_meta_keywords'];
 

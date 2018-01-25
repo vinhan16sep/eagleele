@@ -1,7 +1,7 @@
 <footer class="container-fluid">
     <div class="container center-block">
         <div class="row">
-            <div class="left col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="left col-md-4 col-sm-4 col-xs-12">
                 <div class="content-title">
                     <h2><?php echo $this->lang->line('footer_title'); ?></h2>
                 </div>
@@ -20,12 +20,15 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-lg-3 col-md-4 hidden-sm hidden-xs">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnghethuatyeu123%2F&tabs&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
             </div>
-            <div class="right col-lg-5 col-md-4 col-sm-6 col-xs-12">
+            <div class="right col-md-4 col-sm-4 col-xs-12">
                 <table>
                     <tr>
                         <td><img src="<?php echo base_url('assets/public/img/logo-w.png'); ?>"></td>
+                    </tr>
+                    <tr>
                         <td>
                             <ul>
                                 <li><a href="https://www.facebook.com/EAGLEELE/" target="_blank"><i class="fa fa-2x fa-facebook"></i></a></li>
@@ -68,7 +71,7 @@
 </body>
 <script>
     <?php if($show_intro_popup == 1): ?>
-        //$('#introModal').modal('show');
+        $('#introModal').modal('show');
     <?php endif; ?>
 
     $(function () {
