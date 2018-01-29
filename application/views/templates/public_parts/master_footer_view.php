@@ -21,7 +21,7 @@
                 </table>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnghethuatyeu123%2F&tabs&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEAGLEELE&tabs&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
             </div>
             <div class="right col-md-4 col-sm-4 col-xs-12">
                 <table>
@@ -51,7 +51,7 @@
         <li><i class="fa fa-chevron-up fa-2x scrollup" data-toggle="tooltip" data-placement="top" title="Trở về đầu trang"></i></li>
         <li><i class="fa fa-comment-o fa-2x chatbox" data-toggle="tooltip" data-placement="top" title="Gửi tin nhắn"></i></li>
         <li>
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEAGLEELE%2F&tabs=messages&width=300&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=504743766549751" width="300" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEAGLEELE&tabs=messages&width=300&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=504743766549751" width="300" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </li>
     </ul>
 </div>
